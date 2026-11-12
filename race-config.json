@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "mode": "race",
+  "raceTitle": "REGATTAHUB TEST 2027",
+  "raceDate": "01/10/2027",
+  "organizer": "RegattaHub TEST",
+  "organizerLogoUrl": "",
+  "organizerBannerUrl": "",
+  "settingsEndpoint": "https://script.google.com/macros/s/AKfycbwZHkHtIf_wc9cMTh51gOUidUjBQ1b2-1JjmlZbUPzlfO1GnYpJ76lRIP0x2Gak_G52/exec?action=settings&settings=1Ddykur5Z5YZjxUXdOxxAkIbmWF0SzdlvlDK0GKOy17I",
+  "links": {
+    "entries": "",
+    "crews": "",
+    "results": "",
+    "notice": "",
+    "entryForm": "https://form.jotform.com/262900632499362",
+    "website": "https://regattahub.github.io/rh-test-2027-v2/crew_change.html",
+    "photos": "https://drive.google.com/drive/folders/1SrDu-uXYsLzFOoup2n9Abt5W5fw1FPYZ"
+  }
+}
