@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>RegattaHub — REGATTAHUB TEST 2027</title>
+<title>RegattaHub — ΚΥΠΕΛΛΟ ΧΡΙΣΤΟΥΓΕΝΝΩΝ 2026</title>
 <!-- RegattaHub MASTER race template -->
 <!-- Race-specific values are injected by New Race Wizard -->
 
@@ -1023,9 +1023,9 @@ function makeSettingsEndpoint() {
 
 const CONFIG = {
   RACE_PREFIX: "RH_TEST_2027_V2",
-  EVENT_TITLE: "REGATTAHUB TEST 2027",
-  RACE_DATE: "01/10/2027",
-  SUBMIT_EXPIRATION: "29/09/2027, 21:00",
+  EVENT_TITLE: "ΚΥΠΕΛΛΟ ΧΡΙΣΤΟΥΓΕΝΝΩΝ 2026",
+  RACE_DATE: "12/12/2026",
+  SUBMIT_EXPIRATION: "10/12/2026, 21:00",
 
   SETTINGS_SPREADSHEET_ID: SETTINGS_SPREADSHEET_ID,
   SETTINGS_ENDPOINT: makeSettingsEndpoint(),
@@ -1034,10 +1034,10 @@ const CONFIG = {
   EIO_FLOW: "NO", // AUTO EIO: η ταυτοποίηση αθλητών γίνεται κεντρικά μετά τη Jotform.
 
   ORGANIZER_BANNER: "",
-  ORGANIZER_NAME: "RegattaHub TEST",
-  ORGANIZER_SHORT_NAME: "RegattaHub TEST",
-  ORGANIZER_EMAIL: "info.regattahub@gmail.com",
-  ORGANIZER_TEL: "210 4100 000",
+  ORGANIZER_NAME: "Ναυτικός Αθλητικός Όμιλος Ειρήνης Φιλίας Καλλιθέας",
+  ORGANIZER_SHORT_NAME: "ΝΑΟΕΦΚ",
+  ORGANIZER_EMAIL: "naoefk@naoefk.gr",
+  ORGANIZER_TEL: "210 4101113",
 
   SHOW_RACE_TITLE: "YES",
 
@@ -1053,12 +1053,12 @@ const CONFIG = {
     "https://github.com/jsamartzis-png/logos/blob/main/logo_EntryFlow_removebg-preview.png?raw=true",
 
   EVENT_BACKGROUND: "background.jpg",
-  YEAR: "2027",
-  INFO_PHONE: "210 4100 000"
+  YEAR: "2026",
+  INFO_PHONE: "210 4101113"
 };
 
 const SETTINGS_CACHE_KEY =
-  "entryflow_race_settings_" + SETTINGS_SPREADSHEET_ID;
+  "entryflow_race_settings_christmas_20261120_" + SETTINGS_SPREADSHEET_ID;
 
 function normalizeJotformUrl(url, formId) {
   let value = String(url || "").trim();
@@ -1400,6 +1400,7 @@ async function loadRaceSettingsFromSheet() {
         "Οι ΡΥΘΜΙΣΕΙΣ δεν φορτώθηκαν από το δίκτυο. Χρησιμοποιούνται οι άμεσες/αποθηκευμένες τιμές:",
         secondError
       );
+      setStatus("Δεν ήταν δυνατή η ενημέρωση των ρυθμίσεων του αγώνα. Ανανεώστε τη σελίδα πριν συνεχίσετε.", true);
       return cached || null;
     }
   }
@@ -2626,4 +2627,3 @@ function loadCrewFromJson(crewJson) {
 </script>
 </body>
 </html>
-
