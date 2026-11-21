@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+<html lang="el">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="no-referrer" name="referrer"/>
+<title>EntryFlow — Χριστούγεννα 2026 · V9 Μπλε/Μπεζ ΣΥΝΔΕΔΕΜΕΝΗ ΔΟΚΙΜΗ V4</title>
+<style>
+:root{--navy:#12415f;--deep:#0e5479;--blue:#176c99;--turquoise:#128da3;--ink:#213d54;--muted:#586f81;--bg:#edf3f7;--line:#d6e4ec;--white:#fff;--green:#0e7452;--gold:#9b7425;--danger:#ae4450}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;padding:22px 14px 50px;background:linear-gradient(180deg,#dfeaf1,#f0f5f8 480px);color:var(--ink);font:16px/1.53 Arial,Helvetica,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer;min-height:44px;border:0;border-radius:9px;padding:11px 17px;font-weight:700;background:#126b98;color:white;box-shadow:0 2px 0 #00000010;transition:filter .15s,transform .12s}button:hover{filter:brightness(1.08)}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #5aa9d3;outline-offset:2px}button:active{transform:translateY(1px)}button:disabled{opacity:.53;cursor:not-allowed;box-shadow:none}
+button.secondary{background:#e4edf3;color:#234e67;border:1px solid #cadce6}button.danger{background:#ac4450;color:#fff}button.success{background:#117653}button.ghost{background:#f3f8fb;color:#1a5c80;border:1px solid #d6e5ed}button.smallbtn{font-size:14px;padding:9px 13px}
+main{max-width:920px;margin:auto}.hero{background:linear-gradient(117deg,#0e527c,#117b91);color:#fff;border-radius:17px;padding:25px 31px;box-shadow:0 12px 28px #12456329;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:210px;height:210px;border:1px solid #ffffff22;border-radius:50%;right:-80px;top:-105px;box-shadow:0 0 0 40px #ffffff06}.brand{font-weight:800;letter-spacing:.3px;font-size:16px}.brand span{color:#a0edf3}.hero h1{font-size:clamp(26px,4.5vw,36px);line-height:1.14;margin:9px 0 9px}.race{font-weight:800;font-size:15px;letter-spacing:.035em}.hero .sub{font-size:14px;margin:5px 0 0;color:#e0f4fc}.preview-banner{display:flex;gap:13px;align-items:start;background:#fff4d8;color:#714f10;border:1px solid #e8ca88;padding:14px 16px;border-radius:11px;margin:16px 0;font-size:14px;line-height:1.55}.preview-banner strong{display:block;color:#76520c}.preview-banner .seal{font-size:22px;line-height:1}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}.step{border:1px solid #d5e2e9;background:#ffffffbb;border-radius:10px;padding:11px 13px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:13px;color:#6b8192}.step .num{width:27px;height:27px;flex:none;border-radius:9px;background:#e6eff4;color:#4b738c;display:grid;place-items:center}.step.active{background:#e2f2fa;border-color:#78b9d6;color:#0d5f85}.step.active .num{background:#12709b;color:#fff}
+.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;margin:17px 0;box-shadow:0 6px 18px #1f51610c}.panel>h2{margin:0 0 8px;color:#124c70;font-size:23px}.panel-intro{margin:0 0 16px;color:var(--muted)}.hidden{display:none!important}.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.fields.two{grid-template-columns:repeat(2,minmax(0,1fr))}.fields.one{grid-template-columns:1fr}.field label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;color:#24475f}.field input,.field select{width:100%;height:47px;padding:10px 12px;background:#fff;border:1px solid #adc7d6;border-radius:8px;color:#1c3c53;min-width:0}.field input::placeholder{color:#829aab}.field .hint{font-size:12px;color:#687d8e;margin-top:5px}.row{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:16px 0 0}.callout{background:#e7f4fb;border-left:4px solid #2485b3;color:#24556d;border-radius:8px;padding:12px 14px;margin:14px 0;line-height:1.58}.callout.success{background:#e7f5ee;border-left-color:#13825e;color:#185d44}.callout.warn{background:#fff2dc;border-left-color:#bd8634;color:#754f18}.callout.error{background:#ffeff0;border-left-color:#c34f57;color:#8a303b}.muted{color:#637c8d}.fine{font-size:13px;color:#637c8d;line-height:1.53}.boat-result{border:1px solid #cadfe9;border-radius:10px;background:#f4f9fc;padding:14px 17px;margin:15px 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}.boat-result strong{color:#0c5479}.boat-tag{font-size:12px;font-weight:800;background:#d8eaf3;color:#135b80;padding:5px 9px;border-radius:99px}.otp{font-size:16px;font-weight:700;letter-spacing:.2px;color:#115981}.otp code{font-size:18px;background:#e8f4fb;padding:4px 9px;border-radius:7px}
+.boat-head{display:flex;justify-content:space-between;gap:14px;align-items:start;flex-wrap:wrap;border-bottom:1px solid #e2edf3;padding-bottom:14px;margin-bottom:18px}.boat-head h2{margin:0;color:#124a6e;font-size:23px}.boat-head .subtitle{font-size:14px;color:#5f788b;margin-top:4px}.pill{display:inline-block;padding:7px 11px;border:1px solid #cce0e9;border-radius:99px;color:#1b6787;background:#ecf7fb;font-size:12px;font-weight:800}
+.section-card{background:#fff;border:1px solid #d7e5ed;border-top:4px solid #438eaf;border-radius:13px;box-shadow:0 5px 14px #204a6920;padding:19px 20px;margin:16px 0 20px}.section-card.captain{border-top-color:#176f9a}.section-card.second{border-top-color:#6d80a4}.section-card.crew{border-top-color:#18827f}.section-card.add{border-top-color:#1785b9;background:#f1faff}.section-card.osr{border-top-color:#b88b2c;background:#fffaf1}.section-card h3{color:#154c70;font-size:20px;margin:0}.section-card .section-header{display:flex;align-items:center;gap:12px;margin-bottom:13px}.section-symbol{width:39px;height:39px;display:grid;place-items:center;flex:none;background:#e0f1f8;border-radius:10px;font-size:19px;font-weight:bold;color:#14638e}.section-card.second .section-symbol{background:#eeeffa;color:#686899}.section-card.crew .section-symbol{background:#e2f3ed;color:#188177}.section-card.add .section-symbol{background:#d5edf9;color:#0c77aa}.section-card.osr .section-symbol{background:#f5e7c5;color:#987020}.section-desc{font-size:13px;color:#5b7485;margin-top:2px}.person-line{padding:13px 14px;border-radius:9px;background:#eef6fa;color:#1b4c69;border:1px solid #d5e5ee;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.person-line b{font-weight:800}.person-line .detail{font-size:13px;margin-top:2px;color:#607c8a}.crew-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 2px;border-bottom:1px solid #e1ecf1}.crew-row:last-child{border-bottom:0}.crew-row .crew-info{min-width:0}.crew-row strong{color:#1b405d}.crew-row small{display:block;font-size:13px;color:#69808d;margin-top:3px}.crew-empty{font-size:14px;color:#637c8d}.formarea{padding:14px;margin-top:15px;background:#f3f9fc;border:1px dashed #b9d2e0;border-radius:10px}.formarea h4{font-size:16px;color:#155377;margin:0 0 10px}.add-help{font-size:14px;color:#265b75;margin-bottom:14px}.notice{margin:12px 0 0;font-size:14px}.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:17px}.bar .left{font-size:13px;color:#5e7b8a}.review-list{list-style:none;padding:0;margin:0}.review-list li{padding:10px 0;border-bottom:1px solid #e1eaf0}.review-list li:last-child{border-bottom:0}.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.review-item{padding:13px;border:1px solid #d8e8f0;background:#f3f9fc;border-radius:9px}.review-item .label{font-size:12px;font-weight:bold;color:#667f8c}.review-item .value{margin-top:4px;font-size:15px;font-weight:bold;color:#164869}.nowrap{white-space:nowrap}.spinner{width:17px;height:17px;border:3px solid #ffffff85;border-right-color:transparent;border-radius:50%;display:inline-block;vertical-align:-3px;animation:spin .8s linear infinite;margin-right:8px}@keyframes spin{to{transform:rotate(360deg)}}
+footer{text-align:center;color:#6e8798;font-size:12px;padding:9px 0 0}
+@media(max-width:700px){body{padding:10px 8px 35px}.hero{padding:20px 18px}.steps{gap:5px}.step{padding:9px 7px;font-size:11px;gap:4px}.step .num{width:24px;height:24px}.panel{padding:17px 14px}.fields,.fields.two,.review-grid{grid-template-columns:1fr}.section-card{padding:16px 13px}.crew-row{align-items:flex-start}.boat-head h2{font-size:20px}.bar button{width:100%}.bar{display:block}.bar .left{margin-bottom:10px}}
+@media(prefers-reduced-motion:reduce){.spinner{animation:none}}
+
+/* EntryFlow maritime blue / warm-beige 2026 preview — disconnected UI only */
+:root{--navy:#103c5b;--deep:#0e547c;--blue:#116993;--turquoise:#1487a6;--ink:#213a4d;--muted:#5e7686;--bg:#095b88;--line:#d9e3e8;--white:#fff;--green:#138064;--gold:#b18a44;--danger:#b94d52}
+html{background:#095b88}
+body{padding:26px 14px 48px;background:radial-gradient(ellipse 90% 50% at 10% 8%,#1c7caa 0%,transparent 65%),radial-gradient(ellipse 60% 55% at 95% 80%,#053a64 0%,transparent 80%),linear-gradient(135deg,#0d5c8b,#084d7c 60%,#073e65);background-attachment:fixed;min-height:100vh;color:#193e5a}
+main{max-width:970px}
+.hero{background:linear-gradient(130deg,#f8f8f0,#edf5f1 70%,#e9f2ef);color:#154d71;border:1px solid #d9ded1;border-bottom:5px solid #d2ad69;border-radius:18px;padding:25px 31px 26px;box-shadow:0 13px 28px #00284459}
+.hero:after{border-color:#0f729014;box-shadow:0 0 0 40px #156b9610;z-index:0}
+.hero .hero-top,.hero .hero-copy{position:relative;z-index:1}
+.hero .hero-top{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.sail-mark{width:72px;height:69px;flex:none;filter:drop-shadow(0 2px 1px #1f59792b)}
+.wordmark{display:flex;flex-direction:column;line-height:1.02}
+.wordmark strong{font-style:italic;font-size:31px;letter-spacing:-1.3px;font-weight:900;color:#116195}
+.wordmark strong span{color:#b63142}
+.wordmark small{margin-top:5px;font-size:10px;color:#56718a;letter-spacing:.7px;font-weight:bold;text-transform:uppercase}
+.hero .eyebrow{font-size:12px;letter-spacing:2.4px;text-transform:uppercase;color:#856326;font-weight:800;margin:0 0 7px}
+.hero h1{margin:0 0 11px;color:#0a507b;font-size:clamp(28px,4vw,37px);letter-spacing:-.7px}
+.hero .race{display:inline-block;font-size:14px;color:#123e5d;background:#f6e8c8;border:1px solid #e0ca94;border-radius:7px;padding:5px 10px;letter-spacing:.6px}
+.hero .sub{color:#4b6b7b;margin:13px 0 0;font-size:14px}
+.preview-banner{background:#fff0cf;border-color:#e4bc6f;box-shadow:0 4px 14px #05345124;margin:16px 0}
+.steps{margin:15px 0;gap:9px}
+.step{background:#e6f2f8eb;border:1px solid #abcfe1;color:#2a5670;box-shadow:0 4px 12px #00335527;font-size:13px}
+.step.active{background:#f8f0db;border-color:#c5aa70;color:#0e537e;box-shadow:0 6px 15px #002e4c42}
+.step.active .num{background:#0a6594;color:white}
+.panel{background:#fffdf9;border:1px solid #d7e1e3;border-radius:17px;box-shadow:0 16px 32px #00294351;padding:26px;margin:16px 0}
+.panel>h2{color:#0a527e;font-size:25px}
+.panel-intro{color:#506b7c}
+.boat-head{border-color:#e6dccb}
+.boat-head h2{color:#0a567f}
+.pill{border-color:#dfc48c;background:#fff2d7;color:#8b6020}
+button{background:#0d6898;border:1px solid #07557f;box-shadow:0 3px 0 #03436924;border-radius:9px;letter-spacing:.08px}
+button:hover{filter:brightness(1.07)}
+button.secondary{background:#e9f2f6;border-color:#b8d2de;color:#144b70}
+button.success{background:#137a60;border-color:#0d6751}
+button.danger{background:#b84c50;border-color:#a54246}
+.field input,.field select{height:48px;border:1px solid #b7cdd7;background:#fefdfb;border-radius:9px;color:#244457}
+/* The familiar sandy-beige athlete-card number fields */
+#captainCard,#secondCard,#addCard{background:#fff0cf!important;border:2px solid #d6b47b!important;color:#48381e!important;font-size:18px;font-weight:800;box-shadow:inset 0 1px 2px #b9975b14}
+#captainCard:focus,#secondCard:focus,#addCard:focus{background:#ffedc0!important;outline:3px solid #77c3e9;outline-offset:2px}
+#sailInput,#otpInput{background:#fff5e2;border:1px solid #d8bd87;font-weight:700}
+.field input::placeholder{color:#837f72;font-weight:400}
+.section-card{border:1px solid #e3ded3;border-top:4px solid #237ca7;background:linear-gradient(180deg,#fffefa,#fffdf9);box-shadow:0 8px 20px #123c5620;border-radius:14px;padding:20px 22px;margin:17px 0}
+.section-card.captain{border-top-color:#0c6393}
+.section-card.second{border-top-color:#7388a4}
+.section-card.crew{border-top-color:#168676}
+.section-card.add{border-top-color:#bf9151;background:linear-gradient(180deg,#fff9ed,#fffefa)}
+.section-card.osr{border-top-color:#b79749;background:#fffcf5}
+.section-card .section-header{gap:13px;margin-bottom:16px}
+.section-card h3{font-size:20px;color:#0e4f78}
+.section-symbol{background:#dfedf4;color:#0e608f;border-radius:11px;width:43px;height:43px}
+.section-card.add .section-symbol{background:#f8e4b9;color:#916524}
+.section-card.osr .section-symbol{background:#f2e7cf;color:#95651f;font-size:13px}
+.person-line{background:#f2f8fa;border-color:#d9e9ec}
+.formarea{background:#fff7e9;border:1px dashed #d7b77d}
+.formarea h4{color:#875f2c}
+.boat-result{background:#fff9ec;border-color:#e3cfa8}
+.callout{background:#e8f4fa;border-left-color:#0b76a5}
+.callout.success{background:#e4f4eb;border-left-color:#118060}
+.callout.warn{background:#fff2dd;border-left-color:#b8893b}
+.callout.error{background:#fff0ed;border-left-color:#c44949}
+.action-chooser{border-radius:15px;background:linear-gradient(130deg,#fff0d2 0%,#fff9ed 62%,#f6efe1 100%);border:2px solid #c3a06d;border-top:5px solid #16799d;padding:19px 20px 17px;box-shadow:0 9px 23px #133f5b35, inset 0 1px 0 #fff;margin:20px 0 17px;scroll-margin-top:20px}
+.action-chooser h3{margin:0;color:#104c73;font-size:21px;font-weight:800}
+.action-chooser p{font-size:15px;color:#69512f;margin:5px 0 15px;font-weight:600}
+.action-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.action-option{background:#fffefa;border:1px solid #dbc7a6;color:#175275;font-size:13px;font-weight:800;min-height:58px;padding:11px 9px;text-align:left;box-shadow:0 3px 8px #593d1620;line-height:1.2}
+.action-option .act-icon{font-size:17px;display:inline-block;margin-right:6px;color:#b7873e}
+.action-option.active{background:#fff0cf;border-color:#c6a36b;box-shadow:inset 0 0 0 1px #c6a36b;color:#133b56}
+.action-prompt{margin:12px 0 3px;color:#4b6c80;font-size:13px;min-height:22px}
+.overview-box{margin:13px 0 17px;border:1px solid #dfd0ae;border-radius:11px;padding:14px 17px;background:#fbf7eb}
+.overview-title{font-size:14px;letter-spacing:.2px;color:#855c21;font-weight:800;margin:0 0 10px}
+.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.overview-tile{border-left:3px solid #ccab72;padding:4px 10px;font-size:14px;color:#18435d;min-width:0;overflow-wrap:anywhere}
+.overview-tile .meta{font-size:11px;font-weight:800;letter-spacing:.6px;color:#6e8090;text-transform:uppercase}
+.overview-tile .value{font-size:14px;font-weight:700;margin-top:3px}
+.section-card{scroll-margin-top:22px}
+#editorPanel.mode-select .section-card{display:none}
+#editorPanel.mode-select .section-card.chosen{display:block}
+#editorPanel.mode-select .section-card.chosen{animation:emerge .22s ease-out}
+@keyframes emerge{from{opacity:.5;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.review-item{background:#f9f9f3;border-color:#dfdfd5}
+.review-item .value{overflow-wrap:anywhere}
+footer{color:#e7f5f9;text-shadow:0 1px 1px #003253}
+/* V3 — review the updated crew after every individual action. */
+.change-review{border-radius:15px;border:2px solid #c5a46e;border-top:5px solid #1986a6;background:linear-gradient(160deg,#fffdf7,#f4f8f5);box-shadow:0 12px 30px #052e4b3d;padding:20px 22px;margin:19px 0;scroll-margin-top:20px}
+.change-review h3{color:#104e70;margin:0;font-size:22px;line-height:1.3}
+.change-review .change-subtitle{color:#496a7d;margin:6px 0 12px;font-size:14px}
+.change-alert{padding:10px 13px;background:#e4f4eb;border:1px solid #b7dec9;border-left:4px solid #157c5c;border-radius:9px;color:#145f47;font-size:15px;font-weight:bold;margin:14px 0}
+.roster{background:#fff;border:1px solid #dce6e9;border-radius:11px;overflow:hidden}
+.roster-group{border-bottom:1px solid #dce6e9;padding:11px 14px}
+.roster-group:last-child{border-bottom:0}
+.roster-label{font-size:11px;font-weight:900;color:#667a8b;letter-spacing:.6px;margin-bottom:3px}
+.roster-person{font-size:15px;color:#194966;line-height:1.5;overflow-wrap:anywhere}
+.roster-person strong{font-weight:800}
+.roster-person em{font-style:normal;font-weight:800;color:#966923;background:#fff0cd;padding:2px 7px;border-radius:7px;font-size:12px;margin-left:7px}
+.roster-person.changed{border-radius:6px;background:#fff5db;padding:8px 9px;margin:3px -9px;border-left:3px solid #cb9d4a}
+.roster-members .roster-person{padding:5px 2px}
+.roster-empty{font-size:13px;color:#6b7e88}
+.change-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;padding:13px 0 0;border-top:1px solid #e4d9c5}
+.change-actions button{flex:1 1 210px}
+.change-not-saved{margin-top:12px;font-size:13px;color:#74572b;font-weight:600}
+@media(max-width:520px){.change-review{padding:15px 13px}.change-review h3{font-size:20px}.change-actions button{width:100%}}
+@media(max-width:760px){.action-options{grid-template-columns:repeat(2,1fr)}.hero .hero-top{margin-bottom:14px}.hero{padding:20px 18px}.wordmark strong{font-size:26px}.sail-mark{width:57px;height:54px}.panel{padding:18px 14px}}
+@media(max-width:520px){body{padding:9px 7px 32px}.hero .eyebrow{font-size:10px}.step{font-size:11px}.step .num{width:24px;height:24px}.action-options{grid-template-columns:1fr 1fr;gap:7px}.action-option{font-size:12px;padding:9px 7px;min-height:51px}.overview-grid{grid-template-columns:1fr}.section-card{padding:15px 12px}.boat-head h2{font-size:20px}.section-card h3{font-size:18px}}
+
+
+/* Connected UI TEST V2 — clear continuation and distinct WS OSR summary. */
+.change-actions{align-items:stretch}
+.change-actions #anotherAdd{background:linear-gradient(120deg,#0c5c8d,#147da8);color:#fff;border:2px solid #0b6594;box-shadow:0 4px 12px #0d517535;font-size:15px}
+.change-actions #anotherAdd:hover{filter:brightness(1.1)}
+.change-actions #anotherChange{background:#f7fbff;color:#145477;border:2px solid #83aac0;box-shadow:0 3px 7px #1d4b6515}
+.change-actions #reviewAfterAction{background:#0f7958;color:white;border:2px solid #0f7958}
+.osr-roster-card{margin-top:15px;padding:14px 16px;border:2px solid #c79a4b;border-top:5px solid #ae822e;border-radius:12px;background:linear-gradient(120deg,#fff6df,#fffdf4);box-shadow:0 5px 13px #5f431e1b}
+.osr-roster-title{font-size:14px;font-weight:900;letter-spacing:.2px;color:#76521a;margin:0 0 6px}
+.osr-roster-value{font-size:15px;color:#31516a;line-height:1.5}
+.osr-roster-note{font-size:12px;color:#886e47;margin-top:5px}
+@media(max-width:600px){.change-actions button{flex-basis:100%}}
+/* V4 — read-only current WS OSR declaration + clear replacement action. */
+.osr-roster-card{border:2px solid #c79a4b;border-top:5px solid #ae822e;background:linear-gradient(150deg,#fff4dc,#fffefa);padding:18px 19px;border-radius:14px;margin-top:19px;box-shadow:0 6px 15px #6d4d241a}
+.osr-roster-title{font-size:17px;color:#805617;margin:0 0 6px;font-weight:900}
+.osr-explain{font-size:14px;color:#605237;margin:0 0 12px}
+.osr-current-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.osr-current-person{padding:12px;border-radius:9px;background:#fff;border:1px solid #ead4aa;color:#184863;overflow-wrap:anywhere}
+.osr-current-person .osr-item-label{font-size:12px;letter-spacing:.35px;color:#8a621e;font-weight:900;margin-bottom:3px}
+.osr-current-person strong{font-size:15px}
+.osr-roster-note{font-size:13px;line-height:1.5;color:#745c37;margin:10px 0 13px}
+.osr-edit-action{background:#0b648d;color:white;border:1px solid #075879;box-shadow:0 3px 9px #0c547928;font-size:14px;width:100%;text-align:center}
+.osr-edit-current{padding:13px 14px;background:#fff3d7;border:1px solid #e4c38a;border-radius:8px;margin-bottom:13px;color:#71551c;line-height:1.5}
+.osr-edit-help{font-size:14px;color:#536d7c;line-height:1.5;margin:0 0 15px}
+.osr-overview-line{margin-top:13px;padding-top:10px;border-top:1px solid #e0d3b7;font-size:13px;color:#75571c;font-weight:700}
+@media(max-width:600px){.osr-current-pair{grid-template-columns:1fr}}
+/* Connected QA integration: access and save feedback. */
+.terms-check {display:flex; gap:12px; align-items:flex-start; margin:17px 0; font-size:15px; line-height:1.6;}
+.terms-check input {width:21px;height:21px;flex:none;margin-top:3px;accent-color:#126b98}
+.request-results .boat-result {margin:12px 0;}
+#save.saving::before {content:"";width:15px;height:15px;display:inline-block;vertical-align:-3px;margin-right:9px;border-radius:50%;border:2px solid #ffffff66;border-top-color:#fff;animation:spin 0.75s linear infinite}
+@keyframes spin {to {transform:rotate(360deg)}}
+#saveMessage {margin-top:16px}
+#saveMessage.success {font-weight:650}
+#authMessage {margin-top:12px}
+#reviewWarning {font-weight:650}
+
+/* V3: clear workflow — crew changes first, separate WS OSR, one final CTA. */
+.change-next-step{margin-top:18px;padding:16px 18px;background:#edf7fc;border:1px solid #bdd9e8;border-radius:12px;box-shadow:0 3px 10px #16516a0b}
+.change-next-step h4{margin:0 0 4px;color:#15577c;font-size:17px;font-weight:800}
+.change-next-step p{margin:0;color:#567388;font-size:14px;line-height:1.5}
+.change-next-step .change-actions{margin-top:12px;padding-top:0;border-top:0}
+.change-next-step .change-actions button{flex:1 1 240px}
+#currentOsrSummary.osr-roster-card{margin-top:22px}
+.change-finish{margin-top:24px;padding:20px 20px 22px;border:2px solid #9ec4cf;border-radius:13px;background:linear-gradient(125deg,#f7fcff,#e9f4f5);box-shadow:0 6px 17px #174d6920;text-align:center}
+.finish-instruction{margin:0;font-weight:750;font-size:16px;color:#174f6a;line-height:1.55}
+.change-finish .change-not-saved{font-weight:500;color:#745d39;margin:7px 0 17px}
+.change-finish #reviewAfterAction{display:block;width:min(100%,410px);margin:0 auto;padding:15px 18px;font-size:16px;background:#0f7958;color:#fff;border:2px solid #0b6c4e;box-shadow:0 4px 12px #0f533522}
+.change-finish #reviewAfterAction:hover{filter:brightness(1.08)}
+@media(max-width:600px){.change-next-step{padding:14px}.change-finish{padding:15px}.change-next-step .change-actions button{flex:1 1 100%}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+<div class="hero-top">
+<svg aria-label="Ιστιοπλοϊκό σύμβολο EntryFlow" class="sail-mark" role="img" viewbox="0 0 80 76" xmlns="http://www.w3.org/2000/svg"><path d="M31 7 L31 57 8 57Z" fill="#0f76b0"></path><path d="M39 4 L40 58 60 58Z" fill="#c23241"></path><path d="M28 18 L10 54 28 52Z" fill="#288fca"></path><path d="M7 63 Q22 55 40 63 T75 63" fill="none" stroke="#0d6d9f" stroke-linecap="round" stroke-width="4"></path><path d="M7 70 Q24 62 40 70 T75 70" fill="none" stroke="#35a5c8" stroke-linecap="round" stroke-width="3"></path></svg>
+<div class="wordmark"><strong>Entry<span>Flow</span></strong><small>Regatta entry automation system</small></div>
+</div>
+<div class="hero-copy"><p class="eyebrow">RegattaHub · Προσωπική πρόσβαση</p><h1>ΑΛΛΑΓΗ ΠΛΗΡΩΜΑΤΟΣ</h1><div class="race">ΚΥΠΕΛΛΟ ΧΡΙΣΤΟΥΓΕΝΝΩΝ 2026</div><p class="sub">Η αλλαγή γίνεται στην ίδια συμμετοχή, χωρίς νέα υποβολή.</p></div>
+</header>
+<div class="preview-banner" role="note"><span class="seal">⚠</span><div><strong>ΣΥΝΔΕΔΕΜΕΝΗ ΔΟΚΙΜΗ — ΠΡΑΓΜΑΤΙΚΕΣ ΚΑΤΑΧΩΡΙΣΕΙΣ</strong>Αυτή η έκδοση συνδέεται με το Crew Bridge και τη Jotform των Χριστουγέννων. Η αποθήκευση ενημερώνει πραγματικές συμμετοχές. Η ενεργή V9 δεν αντικαθίσταται.</div></div>
+<nav aria-label="Πρόοδος φόρμας" class="steps">
+<div class="step active" id="stepInd1"><span class="num">1</span><span>Προσωπική πρόσβαση</span></div>
+<div class="step" id="stepInd2"><span class="num">2</span><span>Αλλαγή πληρώματος</span></div>
+<div class="step" id="stepInd3"><span class="num">3</span><span>Επιβεβαίωση</span></div>
+</nav>
+<section class="panel" id="accessPanel">
+<h2>Αποστολή προσωπικού συνδέσμου</h2>
+<p class="panel-intro">Αναζήτησε τη συμμετοχή με τον αριθμό ιστίου. Εφόσον υπάρχει, ο προσωπικός σύνδεσμος αποστέλλεται στην <strong>καταχωρημένη διεύθυνση e-mail</strong>.</p>
+<div class="fields two">
+<div class="field"><label for="sailInput">Αριθμός ιστίου</label><input autocomplete="off" id="sailInput" placeholder="π.χ. GRE-40" type="text" value=""/></div>
+<div class="field" style="display:flex;align-items:end"><button id="findBoat" type="button">ΕΥΡΕΣΗ ΣΥΜΜΕΤΟΧΗΣ</button></div>
+</div>
+<div class="request-results" id="requestResults" role="status"></div>
+<div class="callout hidden" id="accessMessage" role="status"></div>
+<p class="fine">Ο προσωπικός σύνδεσμος ισχύει 14 ημέρες και δεν πρέπει να κοινοποιείται.</p>
+
+</section>
+<section class="panel hidden" id="authPanel">
+<h2>Η προσωπική σας συμμετοχή</h2>
+<p class="callout" id="boatLabel">Γίνεται φόρτωση…</p>
+<label class="terms-check"><input id="terms" type="checkbox"/><span>Αποδέχομαι την
+    <a href="https://docs.google.com/document/d/1_ThpUPcy-w1-D5hScVCcKZ2csmjs6_m-mIkEYNY9c5I/edit" rel="noopener noreferrer" target="_blank">Πολιτική Απορρήτου</a>
+    και τους <a href="https://docs.google.com/document/d/1Btn0eMNSZotVyH3n7RETC3ur8lZ4V_2I/edit" rel="noopener noreferrer" target="_blank">Όρους Χρήσης</a>.
+  </span></label>
+<div class="callout error hidden" id="authMessage" role="alert"></div>
+<div class="row"><button disabled="" id="continue" type="button">ΣΥΝΕΧΕΙΑ ΣΤΗΝ ΑΛΛΑΓΗ ΠΛΗΡΩΜΑΤΟΣ</button></div>
+<p class="fine">Η πρόσβαση επαληθεύεται από τον προσωπικό σύνδεσμο e-mail. Η τρέχουσα λειτουργική V9 δεν απαιτεί χωριστό κωδικό OTP.</p>
+</section>
+<section class="panel hidden mode-select" id="editorPanel">
+<div class="boat-head"><div><h2>Σκάφος — Τροποποίηση πληρώματος</h2><div class="subtitle">Προσωπική αλλαγή στην ίδια συμμετοχή</div></div><span class="pill">ΒΗΜΑ 2 / 3</span></div>
+<p class="callout">Οι αλλαγές διατηρούνται στη φόρμα μέχρι να επιβεβαιώσετε την αποθήκευση. Μόνο τα νέα δελτία αποστέλλονται για έλεγχο ΕΙΟ.</p>
+<div aria-label="Συνοπτικά στοιχεία σκάφους και πληρώματος" class="overview-box">
+<div class="overview-title">ΣΤΟΙΧΕΙΑ ΣΚΑΦΟΥΣ ΚΑΙ ΥΠΑΡΧΟΝΤΟΣ ΠΛΗΡΩΜΑΤΟΣ</div>
+<div class="overview-grid" id="overviewGrid"></div>
+<div id="overviewOsr" class="osr-overview-line" aria-live="polite"></div>
+</div>
+<div aria-label="Επιλογή αλλαγής" class="action-chooser">
+<h3>Τι αλλαγή θέλετε να κάνετε;</h3>
+<p>Πατήστε σε μία από τις ακόλουθες επιλογές.</p>
+<div class="action-options" id="actionOptions">
+<button class="action-option" data-target="captain" type="button"><span class="act-icon">⚓</span>Αλλαγή κυβερνήτη</button>
+<button class="action-option" data-target="second" type="button"><span class="act-icon">◈</span>Δεύτερος κυβερνήτης</button>
+<button class="action-option" data-target="crew" type="button"><span class="act-icon">−</span>Αφαίρεση μέλους</button>
+<button class="action-option" data-target="add" type="button"><span class="act-icon">＋</span>Προσθήκη μέλους</button>
+<button class="action-option" data-target="osr" type="button"><span class="act-icon">✧</span>Αλλαγή WS OSR</button>
+<button class="action-option" data-target="all" type="button"><span class="act-icon">▦</span>Εμφάνιση όλων</button>
+</div>
+<div class="action-prompt" id="actionPrompt" role="status">Επίλεξε μια ενέργεια για να εμφανιστεί το αντίστοιχο πλαίσιο.</div>
+</div>
+<section aria-labelledby="changeReviewTitle" class="change-review hidden" id="changeReviewCard" tabindex="-1">
+<h3 id="changeReviewTitle">Ενημερωμένη κατάσταση πληρώματος</h3>
+<p class="change-subtitle">Δες την αλλαγή σου στην πλήρη λίστα και αποφάσισε αν θέλεις να κάνεις κι άλλη.</p>
+<div class="change-alert" id="changeFeedback" role="status"></div>
+<div class="roster" id="currentCrewList"></div>
+<div class="change-next-step" aria-label="Περαιτέρω αλλαγές πληρώματος">
+<h4>Θέλετε να κάνετε κι άλλη αλλαγή;</h4>
+<p>Οι προηγούμενες αλλαγές διατηρούνται. Μπορείτε να προσθέσετε μέλος ή να επιλέξετε άλλη τροποποίηση.</p>
+<div class="change-actions">
+<button id="anotherAdd" type="button">＋ ΠΡΟΣΘΗΚΗ ΑΛΛΟΥ ΜΕΛΟΥΣ</button>
+<button class="secondary" id="anotherChange" type="button">ΑΛΛΗ ΤΡΟΠΟΠΟΙΗΣΗ</button>
+</div>
+</div>
+<section class="osr-roster-card" id="currentOsrSummary" aria-label="Δήλωση εξοικειωμένων μελών WS OSR 6.05.3">
+<h4 class="osr-roster-title">ΕΞΟΙΚΕΙΩΜΕΝΑ ΜΕΛΗ — WS OSR 6.05.3</h4>
+<p class="osr-explain">Αυτή είναι <strong>ξεχωριστή δήλωση δύο μελών του πληρώματος</strong>, όχι προσθήκη νέων δελτίων.</p>
+<div id="osrCurrentPeople" class="osr-current-pair" aria-live="polite"></div>
+<p class="osr-roster-note" id="osrCurrentNotice"></p>
+<button type="button" id="editOsrFromReview" class="osr-edit-action">ΑΛΛΑΓΗ ΤΩΝ ΔΥΟ ΕΞΟΙΚΕΙΩΜΕΝΩΝ ΜΕΛΩΝ</button>
+</section>
+<div class="change-finish" aria-label="Ολοκλήρωση αλλαγών">
+<p class="finish-instruction">Αν ολοκληρώσατε τις αλλαγές σας, πατήστε το κουμπί «ΕΛΕΓΧΟΣ ΚΑΙ ΣΥΝΕΧΕΙΑ».</p>
+<div class="change-not-saved">Οι αλλαγές δεν έχουν αποθηκευτεί ακόμη.</div>
+<button class="success" id="reviewAfterAction" type="button">ΕΛΕΓΧΟΣ ΚΑΙ ΣΥΝΕΧΕΙΑ</button>
+</div>
+</section>
+<section aria-labelledby="captainTitle" class="section-card captain">
+<div class="section-header"><span class="section-symbol">Α</span><div><h3 id="captainTitle">Κυβερνήτης Α΄</h3><div class="section-desc">Υπάρχων κυβερνήτης και δυνατότητα αντικατάστασης</div></div></div>
+<div class="person-line" id="captainDisplay"></div>
+<div class="row"><button class="secondary smallbtn" id="toggleCaptain" type="button">ΑΛΛΑΓΗ ΚΥΒΕΡΝΗΤΗ Α΄</button></div>
+<div class="formarea hidden" id="captainForm"><h4>Στοιχεία νέου κυβερνήτη Α΄</h4><div class="fields"><div class="field"><label for="captainCard">Αριθμός δελτίου</label><input id="captainCard" inputmode="numeric" placeholder="Νέο δελτίο"/></div><div class="field"><label for="captainName">Ονοματεπώνυμο</label><input id="captainName" placeholder="Προαιρετικό"/></div><div class="field"><label for="captainClub">Όμιλος</label><input id="captainClub" placeholder="Προαιρετικό"/></div></div><div class="row"><button id="applyCaptain" type="button">ΕΦΑΡΜΟΓΗ ΑΛΛΑΓΗΣ</button><button class="secondary" id="cancelCaptain" type="button">ΑΚΥΡΩΣΗ</button></div><div class="notice fine">Η αλλαγή Α΄ κυβερνήτη απαιτεί επιβεβαιωμένη υποστήριξη του Crew Bridge. Σε αυτή τη συνδεδεμένη δοκιμή μπορείτε να τη δείτε, αλλά η αποθήκευση θα μπλοκαριστεί αν αλλάξει ο Α΄ κυβερνήτης.</div></div>
+</section>
+<section aria-labelledby="secondTitle" class="section-card second">
+<div class="section-header"><span class="section-symbol">Β</span><div><h3 id="secondTitle">Δεύτερος κυβερνήτης</h3><div class="section-desc">Προσθήκη, αντικατάσταση ή αφαίρεση</div></div></div>
+<div class="person-line" id="secondDisplay"></div>
+<div class="row"><button class="secondary smallbtn" id="toggleSecond" type="button">ΠΡΟΣΘΗΚΗ / ΑΛΛΑΓΗ ΔΕΥΤΕΡΟΥ</button><button class="danger smallbtn hidden" id="removeSecond" type="button">ΑΦΑΙΡΕΣΗ ΔΕΥΤΕΡΟΥ</button></div>
+<div class="formarea hidden" id="secondForm"><h4>Στοιχεία δεύτερου κυβερνήτη</h4><div class="fields"><div class="field"><label for="secondCard">Αριθμός δελτίου</label><input id="secondCard" inputmode="numeric" placeholder="Δελτίο"/></div><div class="field"><label for="secondName">Ονοματεπώνυμο</label><input id="secondName" placeholder="Προαιρετικό"/></div><div class="field"><label for="secondClub">Όμιλος</label><input id="secondClub" placeholder="Προαιρετικό"/></div></div><div class="row"><button id="applySecond" type="button">ΕΦΑΡΜΟΓΗ ΣΤΗ ΦΟΡΜΑ</button><button class="secondary" id="cancelSecond" type="button">ΑΚΥΡΩΣΗ</button></div></div>
+</section>
+<section aria-labelledby="crewTitle" class="section-card crew">
+<div class="section-header"><span class="section-symbol">Π</span><div><h3 id="crewTitle">Δηλωμένα μέλη πληρώματος</h3><div class="section-desc">Προβολή και αφαίρεση μελών, χωρίς τους κυβερνήτες</div></div></div>
+<div id="crewList"></div>
+</section>
+<section aria-labelledby="addTitle" class="section-card add">
+<div class="section-header"><span class="section-symbol">+</span><div><h3 id="addTitle">Προσθήκη νέου μέλους</h3><div class="section-desc">Πρώτα συμπληρώνεις δελτίο· μετά εμφανίζεται το κουμπί προσθήκης</div></div></div>
+<div class="add-help">Πληκτρολόγησε τον αριθμό δελτίου. Το ονοματεπώνυμο και ο όμιλος είναι προαιρετικά.</div>
+<div class="fields"><div class="field"><label for="addCard">Αριθμός δελτίου</label><input autocomplete="off" id="addCard" inputmode="numeric" placeholder="π.χ. 900004"/></div><div class="field"><label for="addName">Ονοματεπώνυμο</label><input id="addName" placeholder="Προαιρετικό"/></div><div class="field"><label for="addClub">Όμιλος</label><input id="addClub" placeholder="Προαιρετικό"/></div></div>
+<div class="row hidden" id="addButtonWrap"><button id="addMember" type="button">+ ΠΡΟΣΘΗΚΗ ΜΕΛΟΥΣ</button></div>
+<p class="fine">Έως 15 δελτία συνολικά, μαζί με τους κυβερνήτες. Στην κανονική λειτουργία, τα νέα δελτία ελέγχονται από την ΕΙΟ μετά την καταχώριση.</p>
+</section>
+<section aria-labelledby="osrTitle" class="section-card osr">
+<div class="section-header"><span class="section-symbol">OSR</span><div><h3 id="osrTitle">Εξοικειωμένα μέλη WS OSR 6.05.3</h3><div class="section-desc">Επίλεξε μόνο αν θέλεις να αλλάξεις τα υπάρχοντα μέλη</div></div></div>
+<div id="osrEditCurrent" class="osr-edit-current" aria-live="polite"></div>
+<p class="osr-edit-help">Αν θέλετε αντικατάσταση, επιλέξτε <strong>δύο διαφορετικά πρόσωπα από το ενημερωμένο πλήρωμα</strong>. Αφήστε και τα δύο πεδία στην αρχική επιλογή για να μη μεταβληθεί η υπάρχουσα δήλωση.</p>
+<div class="fields two"><div class="field"><label for="osr1">Νέο εξοικειωμένο μέλος 1</label><select id="osr1"></select></div><div class="field"><label for="osr2">Νέο εξοικειωμένο μέλος 2</label><select id="osr2"></select></div></div>
+<div class="row"><button id="applyOsr" type="button">ΕΦΑΡΜΟΓΗ ΔΥΟ ΜΕΛΩΝ WS OSR</button><button id="cancelOsrChange" class="secondary" type="button">ΠΙΣΩ ΣΤΟ ΠΛΗΡΩΜΑ</button></div>
+</section>
+<div class="callout hidden" id="editorMessage" role="status"></div>
+<div class="bar"><span class="left">Όλες οι αλλαγές είναι προσωρινές και μόνο μέσα σε αυτή τη σελίδα.</span><button class="success hidden" id="reviewBtn" type="button">ΕΛΕΓΧΟΣ ΚΑΙ ΣΥΝΕΧΕΙΑ</button></div>
+</section>
+<section class="panel hidden" id="reviewPanel">
+<h2>Επιβεβαίωση αλλαγών πληρώματος</h2>
+<p class="panel-intro">Ελέγξτε προσεκτικά τη σύνθεση πριν αποθηκεύσετε στην ίδια συμμετοχή.</p>
+<div id="reviewContent"></div>
+<div class="callout warn">Η αποθήκευση θα ενημερώσει την πραγματική συμμετοχή στη Jotform και θα δημιουργήσει εργασίες ΕΙΟ μόνο για νέα δελτία.</div>
+<div aria-live="polite" class="callout hidden" id="saveMessage" role="status"></div>
+<div class="callout warn hidden" id="reviewWarning" role="alert"></div><div class="row" id="reviewActions"><button class="success" id="save" type="button">ΑΠΟΘΗΚΕΥΣΗ ΣΤΗΝ ΙΔΙΑ ΣΥΜΜΕΤΟΧΗ</button><button class="secondary" id="back" type="button">ΠΙΣΩ ΣΤΗ ΦΟΡΜΑ</button></div>
+
+</section>
+<footer>© 2026 RegattaHub / EntryFlow · Χριστούγεννα 2026 · V9 ΜΠΛΕ/ΜΠΕΖ ΣΥΝΔΕΔΕΜΕΝΗ ΔΟΚΙΜΗ</footer>
+</main>
+<script>"use strict";
+// Christmas Crew Bridge live read and save. V9 transport and save preserved.
+const URL_LOOKUP = "https://script.google.com/macros/s/AKfycbx3BMUsnmQRgpGwFevaWxl6kAuz4F9hXVfToiOr2CKmN_1NJr6yYLS4zvJCJB_X-h6K/exec";
+const $ = id => document.getElementById(id);
+const mk = (tag, content, className) => {const x=document.createElement(tag);if(content!=null)x.textContent=content;if(className)x.className=className;return x;};
+const show = id => $(id).classList.remove('hidden');
+const hide = id => $(id).classList.add('hidden');
+const normalize = x => String(x||'').replace(/\D/g,'');
+const isCard = x => /^\d{3,12}$/.test(String(x||''));
+const P = (card,name='',club='') => ({card:normalize(card),name:String(name||'').trim(),club:String(club||'').trim()});
+const state = {data:null,revision:'',captain:null,second:null,members:[],initialMembers:[],initialCaptain:'',osr1:'',osr2:'',initialOsr:null,hasEdited:false};
+function notice(id,msg,isError=false){const box=$(id);box.textContent=msg;box.className='callout '+(isError?'error':'success');}
+function step(n){
+ for(const id of ['accessPanel','authPanel','editorPanel','reviewPanel'])hide(id);
+ for(let i=1;i<=3;i++)$('stepInd'+i).classList.toggle('active',i===n);
+ show(n===1?'accessPanel':n===2?'editorPanel':'reviewPanel');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function personText(p){return(p.name?p.name+' — Δελτίο '+p.card:'Δελτίο '+p.card)+(p.club?' — '+p.club:'');}
+function allCards(){return [state.captain.card,...(state.second?[state.second.card]:[]),...state.members.map(p=>p.card)];}
+function validUnique(card,except=''){return isCard(card)&&(card===except||!allCards().includes(card));}
+function msg(text,error=false){$('editorMessage').textContent=text;$('editorMessage').className='callout '+(error?'error':'success');}
+function resetMsg(){hide('editorMessage');}
+function getAuth(){const p=new URLSearchParams(location.hash.slice(1));const id=p.get('submissionId'),token=p.get('editToken');return /^\d{10,22}$/.test(id||'')&&/^[a-f0-9]{64}$/.test(token||'')?{id,token}:null;}
+function loadJsonp(url){
+  return new Promise((resolve,reject)=>{
+    const id='rhcrew_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+    const rid=id+'_id'; let done=false,frame=null,script=null;
+    const timer=setTimeout(()=>finish(Error('Η επικοινωνία καθυστέρησε.')),18000);
+    function clean(){clearTimeout(timer);window.removeEventListener('message',onFrameMessage);frame?.remove();script?.remove();try{delete window[id];}catch(_){window[id]=undefined;}}
+    function finish(err,data){if(done)return;done=true;clean();err?reject(err):resolve(data);}
+    function onFrameMessage(ev){if(!frame||ev.source!==frame.contentWindow)return;
+      const m=ev.data;if(!m||m.rid!==rid)return;
+      m.error?finish(Error('Δεν ήταν δυνατή η σύνδεση με το RegattaHub.')):finish(null,m.payload);
+    }
+    const urlWithCallback=url+(url.includes('?')?'&':'?')+'callback='+encodeURIComponent(id)+'&_='+Date.now();
+    if('credentialless' in document.createElement('iframe')){
+      frame=document.createElement('iframe');frame.credentialless=true;
+      frame.setAttribute('sandbox','allow-scripts');frame.setAttribute('aria-hidden','true');
+      frame.tabIndex=-1;frame.style.cssText='position:absolute;visibility:hidden;width:0;height:0;border:0';
+      const safe=v=>JSON.stringify(v).replace(/</g,'\u003c');
+      frame.srcdoc='<!doctype html><meta charset="utf-8"><script>window['+safe(id)+']=function(v){parent.postMessage({rid:'+safe(rid)+',payload:v},'+safe(location.origin)+');};var s=document.createElement("script");s.src='+safe(urlWithCallback)+';s.onerror=function(){parent.postMessage({rid:'+safe(rid)+',error:true},'+safe(location.origin)+');};document.head.appendChild(s);<\/script>';
+      window.addEventListener('message',onFrameMessage);document.body.appendChild(frame);
+    }else{
+      window[id]=data=>finish(null,data);script=document.createElement('script');
+      script.referrerPolicy='no-referrer';script.src=urlWithCallback;
+      script.onerror=()=>finish(Error('Δεν ήταν δυνατή η σύνδεση με το RegattaHub.'));
+      document.head.appendChild(script);
+    }
+  });
+}
+
+function fillPersonDisplay(target,person,emptyText){const root=$(target);root.replaceChildren();if(!person){root.append(mk('span',emptyText,'muted'));return;}let box=mk('div');box.append(mk('b',person.name||'Δελτίο '+person.card),mk('div','Δελτίο '+person.card+(person.club?' · '+person.club:''),'detail'));root.append(box);}
+function scrollToNode(node){
+ if(!node)return;
+ window.requestAnimationFrame(()=>{
+  node.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+  if(node.id==='changeReviewCard')node.focus({preventScroll:true});
+ });
+}
+// WS OSR selections live in separate Jotform fields. Some Crew Bridge versions
+// do not return them yet. Never infer 'no existing OSR' from missing fields.
+function initialOsrFromBridge(d){
+ if(!d || typeof d!=='object')return null;
+ const rawPair = d.wosr_members || d.ws_osr_members || d.osr_members || d.wosr || d.ws_osr || null;
+ let raw=[];
+ if(Array.isArray(rawPair))raw=rawPair;
+ else if(rawPair && typeof rawPair==='object')raw=[rawPair.member1||rawPair.member_1||rawPair.first,rawPair.member2||rawPair.member_2||rawPair.second];
+ if(!raw.length) raw=[d.wosr_member_1||d.ws_osr_member_1||d.osr_member_1,d.wosr_member_2||d.ws_osr_member_2||d.osr_member_2];
+ if(!raw[0] || !raw[1])return null;
+ const asPerson=entry=>{
+  if(typeof entry==='object' && entry){return {name:String(entry.name||entry.full_name||entry.label||'').trim(),card:normalize(entry.card||entry.card_number||'')};}
+  const val=String(entry||'').trim();return /^\d{3,12}$/.test(val)?{name:'',card:val}:{name:val,card:''};
+ };
+ return raw.slice(0,2).map(asPerson);
+}
+function osrDisplay(person){
+ if(!person)return 'Μη διαθέσιμο';
+ if(person.card){const found=[state.captain,...(state.second?[state.second]:[]),...state.members].find(x=>x?.card===person.card);return (found?.name || person.name || 'Δελτίο '+person.card)+(found?.card?' — '+found.card:'');}
+ return person.name||'Μη διαθέσιμο';
+}
+function osrStatus(){
+ const a=$('osr1').value,b=$('osr2').value;
+ if(a&&b){return {values:[{card:a},{card:b}],label:'Νέα επιλογή προς αποθήκευση',note:'Η νέα δήλωση είναι προσωρινή. Θα αποσταλεί μόνο μετά την τελική αποθήκευση.'};}
+ if(state.initialOsr){return {values:state.initialOsr,label:'Ήδη δηλωμένα στη συμμετοχή',note:'Αυτά τα δύο πρόσωπα παραμένουν, εκτός αν επιλέξετε αντικατάσταση.'};}
+ return {values:[null,null],label:'Τα ήδη δηλωμένα δύο μέλη δεν είναι διαθέσιμα στην παρούσα προβολή',note:'Η προηγούμενη δήλωση διατηρείται εφόσον δεν επιλέξετε δύο νέα μέλη. Δεν σημαίνει ότι δεν υπάρχουν ήδη δηλωμένα μέλη.'};
+}
+function renderOsrStatus(){
+ const info=osrStatus();
+ const root=$('osrCurrentPeople');root.replaceChildren();
+ info.values.forEach((p,i)=>{
+  const card=mk('div',null,'osr-current-person');
+  card.append(mk('div','ΜΕΛΟΣ '+(i+1),'osr-item-label'),mk('strong',osrDisplay(p)));
+  root.append(card);
+ });
+ $('osrCurrentNotice').textContent=info.label+'. '+info.note;
+ $('osrEditCurrent').textContent=info.label+': '+info.values.map((p,i)=>(i+1)+'. '+osrDisplay(p)).join(' · ')+'.';
+ $('overviewOsr').textContent='WS OSR 6.05.3 — '+info.label+': '+info.values.map(osrDisplay).join(' / ');
+}
+function updateCrewReview(latestCard=''){
+ const box=$('currentCrewList');box.replaceChildren();
+ const group=(label)=>{const g=mk('div',null,'roster-group');g.append(mk('div',label,'roster-label'));box.append(g);return g;};
+ const line=(g,who,prefix='')=>{
+  if(!who){g.append(mk('div','Δεν έχει δηλωθεί','roster-empty'));return;}
+  const row=mk('div',null,'roster-person'+(who.card===latestCard?' changed':''));
+  row.append(mk('strong',(prefix||'')+(who.name||'Δελτίο '+who.card)),document.createTextNode((who.name?' — Δελτίο '+who.card:'')+(who.club?' · '+who.club:'')));
+  if(who.card===latestCard)row.append(mk('em','ΑΛΛΑΓΗ'));
+  g.append(row);
+ };
+ line(group('ΚΥΒΕΡΝΗΤΗΣ Α΄'),state.captain);
+ line(group('ΔΕΥΤΕΡΟΣ ΚΥΒΕΡΝΗΤΗΣ'),state.second);
+ const members=group('ΜΕΛΗ ΠΛΗΡΩΜΑΤΟΣ · '+state.members.length);
+ if(!state.members.length)members.append(mk('div','Δεν υπάρχουν δηλωμένα μέλη','roster-empty'));
+ state.members.forEach((p,i)=>line(members,p,(i+1)+'. '));
+ renderOsrStatus();
+}
+function showCompletedAction(note,card=''){
+ resetMsg();
+ $('changeFeedback').textContent=note;
+ updateCrewReview(card);
+ const editor=$('editorPanel');editor.classList.add('mode-select');
+ editor.querySelectorAll('.section-card').forEach(c=>c.classList.remove('chosen'));
+ for(const button of document.querySelectorAll('.action-option')){button.classList.remove('active');button.setAttribute('aria-pressed','false');}
+ $('actionPrompt').textContent='Η αλλαγή εμφανίζεται στο πλήρωμα. Μπορείτε να κάνετε κι άλλη, πριν αποθηκεύσετε.';
+ $('reviewBtn').classList.add('hidden'); state.hasEdited=true;
+ show('changeReviewCard');scrollToNode($('changeReviewCard'));
+}
+function backForAnotherChange(){
+ hide('changeReviewCard');$('reviewBtn').classList.toggle('hidden',!state.hasEdited);
+ const editor=$('editorPanel');editor.classList.add('mode-select');
+ editor.querySelectorAll('.section-card').forEach(c=>c.classList.remove('chosen'));
+ for(const button of document.querySelectorAll('.action-option')){button.classList.remove('active');button.setAttribute('aria-pressed','false');}
+ $('actionPrompt').textContent='Πατήστε σε μία από τις ακόλουθες επιλογές για νέα αλλαγή.';
+ scrollToNode(editor.querySelector('.action-chooser'));
+}
+function render(){
+ fillPersonDisplay('captainDisplay',state.captain);
+ fillPersonDisplay('secondDisplay',state.second,'Δεν έχει δηλωθεί δεύτερος κυβερνήτης.');
+ $('removeSecond').classList.toggle('hidden',!state.second);
+ const root=$('crewList');root.replaceChildren();
+ if(!state.members.length){root.append(mk('p','Δεν υπάρχουν μέλη πληρώματος. Πρόσθεσε τουλάχιστον ένα μέλος.','crew-empty'));}
+ state.members.forEach((p,index)=>{const row=mk('div',null,'crew-row'),info=mk('div',null,'crew-info');info.append(mk('strong',(index+1)+'. '+(p.name||'Δελτίο '+p.card)),mk('small','Δελτίο '+p.card+(p.club?' · '+p.club:'')));const btn=mk('button','ΑΦΑΙΡΕΣΗ','danger smallbtn');btn.type='button';btn.addEventListener('click',()=>{state.members.splice(index,1);render();showCompletedAction('Το δελτίο '+p.card+' αφαιρέθηκε από τη λίστα (δεν έχει αποθηκευτεί ακόμη).');});row.append(info,btn);root.append(row);});
+ refreshOSR(); updateOverview(); renderOsrStatus();
+}
+function refreshOSR(){
+ for(const id of ['osr1','osr2']){
+  const input=$(id),old=input.value;
+  input.replaceChildren(new Option('Χωρίς αλλαγή',''));
+  for(const p of [state.captain,...(state.second?[state.second]:[]),...state.members])input.add(new Option((p.name||'Δελτίο '+p.card)+' — '+p.card,p.card));
+  if(Array.from(input.options).some(o=>o.value===old))input.value=old;
+ }
+}
+function applyPerson(kind){
+ const cap=kind==='captain', prefix=cap?'captain':'second';
+ const card=normalize($(prefix+'Card').value),name=$(prefix+'Name').value.trim(),club=$(prefix+'Club').value.trim();
+ const previous=cap?state.captain?.card:state.second?.card||'';
+ if(!validUnique(card,previous)){msg('Συμπλήρωσε 3–12 ψηφία σε δελτίο που δεν ανήκει ήδη σε άλλον ρόλο.',true);return;}
+ if(cap){state.captain=P(card,name,club);hide('captainForm');}else{state.second=P(card,name,club);hide('secondForm');}
+ render();showCompletedAction((cap?'Ο κυβερνήτης Α΄':'Ο δεύτερος κυβερνήτης')+' ενημερώθηκε στο πλήρωμα (δελτίο '+card+'). Δεν έχει αποθηκευτεί ακόμη.',card);
+}
+function addMember(){
+ const card=normalize($('addCard').value);
+ if(!validUnique(card)){msg('Το δελτίο πρέπει να έχει 3–12 ψηφία και να μην υπάρχει ήδη στο πλήρωμα.',true);return;}
+ if(allCards().length>=15){msg('Το όριο είναι 15 δελτία συνολικά.',true);return;}
+ state.members.push(P(card,$('addName').value,$('addClub').value));
+ for(const id of ['addCard','addName','addClub'])$(id).value='';
+ hide('addButtonWrap');render();showCompletedAction('Το δελτίο '+card+' προστέθηκε στο πλήρωμα (δεν έχει αποθηκευτεί ακόμη).',card);
+}
+function review(){
+ resetMsg();
+ if(!state.members.length){msg('Χρειάζεται τουλάχιστον ένα μέλος πληρώματος.',true);step(2);return;}
+ if(allCards().length>15||new Set(allCards()).size!==allCards().length){msg('Υπάρχουν περισσότερα από 15 ή διπλά δελτία.',true);return;}
+ const x=$('osr1').value,y=$('osr2').value;
+ if((!!x)!=(!!y)||(x&&x===y)){msg('Για αλλαγή WS OSR επέλεξε δύο διαφορετικά μέλη, ή άφησε και τα δύο «Χωρίς αλλαγή».',true);return;}
+ const r=$('reviewContent');r.replaceChildren();
+ const g=mk('div',null,'review-grid');
+ for(const [label,value]of [['Σκάφος',boatName()],['Κυβερνήτης Α΄',personText(state.captain)],['Δεύτερος κυβερνήτης',state.second?personText(state.second):'Δεν έχει δηλωθεί'],['WS OSR',x&&y?x+' και '+y:'Διατήρηση υφιστάμενων επιλογών']]){const item=mk('div',null,'review-item');item.append(mk('div',label,'label'),mk('div',value,'value'));g.append(item);}r.append(g);
+ const heading=mk('h3','Τελικό πλήρωμα');heading.style.margin='22px 0 8px';r.append(heading);
+ const ul=mk('ul',null,'review-list');state.members.forEach((p,i)=>ul.append(mk('li',(i+1)+'. '+personText(p))));r.append(ul);
+ const before=new Set(state.initialMembers.map(p=>p.card)),after=new Set(state.members.map(p=>p.card));
+ r.append(mk('p','Προστέθηκαν: '+([...after].filter(c=>!before.has(c)).join(', ')||'Κανένα')+' · Αφαιρέθηκαν: '+([...before].filter(c=>!after.has(c)).join(', ')||'Κανένα'),'fine'));
+ hide('saveMessage');show('reviewActions');
+ const changedCaptain=normalize(state.captain.card)!==state.initialCaptain;
+ $('save').disabled=changedCaptain;
+ $('save').textContent='ΑΠΟΘΗΚΕΥΣΗ ΣΤΗΝ ΙΔΙΑ ΣΥΜΜΕΤΟΧΗ';
+ if(changedCaptain){notice('reviewWarning','Η αλλαγή Α΄ κυβερνήτη δεν έχει συνδεθεί ακόμη με τον μηχανισμό αποθήκευσης. Δεν μπορεί να υποβληθεί αυτή η σύνθεση. Πατήστε ΠΙΣΩ και επαναφέρετε τον αρχικό κυβερνήτη πριν δοκιμάσετε άλλες αλλαγές.',true);}else{hide('reviewWarning');}
+ 
+ step(3);
+}
+function updateOverview(){
+ const container=$('overviewGrid');if(!container)return;container.replaceChildren();
+ const fields=[['ΣΚΑΦΟΣ',boatName()],['ΚΥΒΕΡΝΗΤΗΣ',personText(state.captain)],['ΔΕΥΤΕΡΟΣ ΚΥΒΕΡΝΗΤΗΣ',state.second?personText(state.second):'Δεν έχει δηλωθεί'],['ΜΕΛΗ ΠΛΗΡΩΜΑΤΟΣ',state.members.length+' · '+(state.members.map(p=>p.card).join(', ')||'Κανένα')]];
+ for(const [label,value] of fields){const tile=mk('div',null,'overview-tile');tile.append(mk('div',label,'meta'),mk('div',value,'value'));container.append(tile);}
+}
+function chooseAction(which, jumpToSection=false){
+ if(which==='osr')state.osrEditSnapshot=[$('osr1').value,$('osr2').value];
+ hide('changeReviewCard');$('reviewBtn').classList.toggle('hidden',!state.hasEdited);
+ const editor=$('editorPanel');const cards=editor.querySelectorAll('.section-card');
+ editor.classList.toggle('mode-select',which!=='all');
+ for(const card of cards)card.classList.toggle('chosen',card.classList.contains(which));
+ for(const button of document.querySelectorAll('.action-option')){
+  const active=button.dataset.target===which;
+  button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));
+ }
+ const labels={captain:'Αλλαγή Α΄ κυβερνήτη',second:'Δεύτερος κυβερνήτης',crew:'Αφαίρεση δηλωμένου μέλους',add:'Προσθήκη νέου μέλους',osr:'Εξοικειωμένα μέλη WS OSR',all:'Όλες οι ενότητες'};
+ $('actionPrompt').textContent=which?('Επιλεγμένη ενότητα: '+labels[which]+'. Οι αλλαγές παραμένουν στη φόρμα μέχρι την τελική επιβεβαίωση.'):'Επίλεξε μία ενέργεια.';
+ if(!jumpToSection)return;
+ // The user chose an action: reveal its editing fields and bring that section into view.
+ if(which==='captain')show('captainForm');
+ if(which==='second'){
+  if($('secondForm').classList.contains('hidden')){
+   for(const [id,key] of [['secondCard','card'],['secondName','name'],['secondClub','club']])
+    $(id).value=state.second?.[key]||'';
+   show('secondForm');
+  }
+ }
+ const targets={captain:'.section-card.captain',second:'.section-card.second',crew:'.section-card.crew',add:'.section-card.add',osr:'.section-card.osr',all:'.section-card.captain'};
+ const section=editor.querySelector(targets[which]);
+ const focusTargets={captain:$('captainCard'),second:$('secondCard'),crew:section?.querySelector('.crew-row button'),add:$('addCard'),osr:$('osr1'),all:$('toggleCaptain')};
+ window.requestAnimationFrame(()=>{
+  if(!section)return;
+  section.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+  const field=focusTargets[which];
+  if(field)field.focus({preventScroll:true});
+ });
+}
+
+
+function boatName(){const d=state.data||{};return String(d.yacht_name||'Σκάφος')+' — '+String(d.sail_letters||'GRE-')+String(d.sail_number||'');}
+function initialCrew(){
+ const d=state.data;
+ state.captain=P(d.captain_card,d.captain_name,d.captain_club);
+ state.initialCaptain=state.captain.card;
+ state.second=d.second_captain_card?P(d.second_captain_card,d.second_captain_name,d.second_captain_club):null;
+ state.members=(Array.isArray(d.crew_members)?d.crew_members:[]).map(x=>P(x.card,x.name,x.club));
+ state.initialMembers=state.members.map(x=>({...x}));
+ state.initialOsr=initialOsrFromBridge(d);
+ for(const id of ['osr1','osr2'])$(id).value='';
+ state.hasEdited=false;
+ $('editorPanel').querySelector('.boat-head h2').textContent=boatName();
+ $('editorPanel').querySelector('.boat-head .subtitle').textContent='Τροποποίηση πληρώματος στην ίδια συμμετοχή';
+ for(const id of ['captainForm','secondForm','addButtonWrap','changeReviewCard'])hide(id);
+ for(const id of ['addCard','addName','addClub','captainCard','captainName','captainClub'])$(id).value='';
+ render();chooseAction(null,false);hide('reviewBtn');
+}
+async function lookup(){
+ const a=getAuth();if(!a){step(1);return;}
+ $('boatLabel').textContent='Φορτώνεται η συμμετοχή…';$('continue').disabled=true;
+ try{
+  const r=await loadJsonp(URL_LOOKUP+'?action=submissionLookup&submissionId='+encodeURIComponent(a.id)+'&editToken='+encodeURIComponent(a.token));
+  if(!r?.ok||!r.found||!r.data||r.data.access_mode!=='READ_ONLY'||String(r.data.submission_id)!==a.id)
+   throw Error('Η προσωπική πρόσβαση δεν επαληθεύτηκε. Ζητήστε νέο σύνδεσμο.');
+  state.data=r.data;state.revision=String(r.data.revision||'');
+  $('boatLabel').textContent='Σκάφος '+boatName();
+  $('continue').disabled=false;
+ }catch(e){notice('authMessage',e.message,true);$('boatLabel').textContent='Δεν φορτώθηκε η συμμετοχή.';}
+}
+async function findBoat(){
+ const q=$('sailInput').value.trim(),sail=(q.match(/\d+$/)||[])[0];
+ const box=$('requestResults');
+ if(!sail||sail.length>8){box.textContent='Συμπληρώστε έγκυρο αριθμό ιστίου.';return;}
+ box.textContent='Αναζήτηση…';
+ try{
+  const r=await loadJsonp(URL_LOOKUP+'?action=sailLookup&sail='+encodeURIComponent(sail));
+  box.replaceChildren();const matches=Array.isArray(r?.matches)?r.matches:[];
+  if(!matches.length){box.textContent='Δεν βρέθηκε συμμετοχή.';return;}
+  matches.forEach(m=>{
+    const row=mk('div',null,'boat-result');
+    row.append(mk('strong',String(m.yacht_name||'Σκάφος')+' — '+String(m.sail_letters||'GRE-')+String(m.sail_number||'')));
+    const b=mk('button','ΣΤΕΙΛΤΕ ΣΥΝΔΕΣΜΟ','smallbtn');b.type='button';
+    b.onclick=async()=>{b.disabled=true;b.textContent='Αποστολή…';
+     try{const x=await loadJsonp(URL_LOOKUP+'?action=requestLink&submissionId='+encodeURIComponent(m.submission_id));box.textContent=x?.message||'Ελέγξτε το email της συμμετοχής.';}
+     catch(_){box.textContent='Δεν ολοκληρώθηκε η αποστολή. Επικοινωνήστε με τη γραμματεία.';}};
+    row.append(b);box.append(row);
+  });
+ }catch(e){box.textContent='Η αναζήτηση απέτυχε: '+e.message;}
+}
+function route(){
+ if(location.protocol==='file:'){
+  document.querySelector('.preview-banner').innerHTML='<strong>Απαιτείται δημοσίευση στο GitHub Pages για συνδεδεμένη δοκιμή. Μην εισάγετε προσωπικό σύνδεσμο σε τοπικό αρχείο.</strong>';
+  hide('accessPanel');return;
+ }
+ if(getAuth()){
+   for(const id of ['accessPanel','authPanel','editorPanel','reviewPanel'])hide(id);
+   show('authPanel');for(let i=1;i<=3;i++)$('stepInd'+i).classList.toggle('active',i===1);
+   lookup();
+ }else{step(1);}
+}
+
+function save() {
+  const a = getAuth();
+  if (!a || !state.data?.revision) {
+    notice('saveMessage', 'Απαιτείται νέος προσωπικός σύνδεσμος.', true);
+    return;
+  }
+
+  const btn = $('save');
+  btn.disabled = true;
+  btn.textContent = 'ΑΠΟΘΗΚΕΥΣΗ…';
+  notice('saveMessage', 'Αποθηκεύεται η αλλαγή στη συμμετοχή σας…');
+
+  const payload = {
+    revision: state.revision,
+    members: state.members,
+    second: state.second,
+    wosr: [$('osr1').value, $('osr2').value].filter(Boolean)
+  };
+
+  const cleanCard = value => String(value || '').replace(/\D/g, '');
+  const cardsKey = people => (Array.isArray(people) ? people : [])
+    .map(person => cleanCard(person.card)).sort().join('|');
+  const oldCrew = Array.isArray(state.data.crew_members) ? state.data.crew_members : [];
+  const beforeMembers = cardsKey(oldCrew);
+  const expectedMembers = cardsKey(state.members);
+  const beforeSecond = cleanCard(state.data.second_captain_card);
+  const expectedSecond = cleanCard(state.second?.card);
+  const expectedCaptain = cleanCard(state.captain.card);
+  const addedCount = state.members.filter(m =>
+    !oldCrew.some(old => cleanCard(old.card) === cleanCard(m.card))
+  ).length;
+
+  // A read-back can verify a real membership change. For OSR-only changes,
+  // the existing explicit saveStatus / postMessage confirmation remains required.
+  const canConfirmByReadback = payload.wosr.length === 0 &&
+    (beforeMembers !== expectedMembers || beforeSecond !== expectedSecond);
+
+  const frame = document.createElement('iframe');
+  frame.name = 'rhcrew_post_' + Date.now();
+  frame.hidden = true;
+  frame.setAttribute('aria-hidden', 'true');
+
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.target = frame.name;
+  form.action = URL_LOOKUP;
+  form.style.display = 'none';
+
+  const fields = {
+    action: 'updateCrew',
+    submissionId: a.id,
+    editToken: a.token,
+    payload: JSON.stringify(payload)
+  };
+  for (const [key, value] of Object.entries(fields)) {
+    const input = document.createElement('input');
+    input.name = key;
+    input.type = 'hidden';
+    input.value = value;
+    form.append(input);
+  }
+  document.body.append(frame, form);
+
+  let finished = false;
+  let busy = false;
+  let timedOut = false;
+  let poll = null;
+  let timeout = null;
+
+  function cleanup() {
+    if (poll !== null) clearInterval(poll);
+    if (timeout !== null) clearTimeout(timeout);
+    window.removeEventListener('message', onMessage);
+    setTimeout(() => {
+      form.remove();
+      frame.remove();
+    }, 1200);
+  }
+
+  function finish(result) {
+    if (finished) return;
+    finished = true;
+    cleanup();
+    btn.disabled = true;
+    btn.textContent = '✓ ΟΛΟΚΛΗΡΩΘΗΚΕ';
+    hide('back');
+    notice('saveMessage',
+      '✓ Η αλλαγή πληρώματος επιβεβαιώθηκε στην ίδια συμμετοχή. ' +
+      'Νέα δελτία προς έλεγχο: ' + String(result.queuedNewCards ?? '—') + '. ' +
+      'Δεν δημιουργήθηκε νέα συμμετοχή. ' +
+      'Η διαδικασία ολοκληρώθηκε — μπορείτε τώρα να κλείσετε αυτή την καρτέλα.'
+    );
+  }
+
+  function onMessage(event) {
+    if (event.origin !== 'https://script.google.com' &&
+        event.origin !== 'https://script.googleusercontent.com') return;
+    const e = event.data;
+    if (e?.app === 'regattahub-crew-christmas-v9' &&
+        e.result?.ok && e.result.updated &&
+        String(e.result.submissionId) === a.id) {
+      finish(e.result);
+    }
+  }
+
+  async function confirmSave() {
+    if (finished || busy) return;
+    busy = true;
+    try {
+      // Independent, authenticated read-back of the same submission.
+      // This is especially useful when the separate saveStatus signal is delayed.
+      if (canConfirmByReadback) {
+        try {
+          const check = await loadJsonp(
+            URL_LOOKUP + '?action=submissionLookup' +
+            '&submissionId=' + encodeURIComponent(a.id) +
+            '&editToken=' + encodeURIComponent(a.token)
+          );
+          const d = check?.data;
+          if (!finished && check?.ok && check?.found &&
+              d?.access_mode === 'READ_ONLY' &&
+              String(d.submission_id) === a.id &&
+              cardsKey(d.crew_members) === expectedMembers &&
+              cleanCard(d.second_captain_card) === expectedSecond &&
+              cleanCard(d.captain_card) === expectedCaptain) {
+            finish({queuedNewCards: addedCount});
+            return;
+          }
+        } catch (_) {
+          // Do not claim success if the read-back fails.
+        }
+      }
+
+      // Keep the original server acknowledgement path unchanged.
+      try {
+        const r = await loadJsonp(
+          URL_LOOKUP + '?action=saveStatus' +
+          '&submissionId=' + encodeURIComponent(a.id) +
+          '&editToken=' + encodeURIComponent(a.token) +
+          '&revision=' + encodeURIComponent(payload.revision)
+        );
+        if (!finished && r?.ok && r.confirmed && r.updated &&
+            String(r.submissionId) === a.id) {
+          finish(r);
+          return;
+        }
+      } catch (_) {
+        // No false 'success' when server status cannot be read.
+      }
+    } finally {
+      busy = false;
+    }
+  }
+
+  window.addEventListener('message', onMessage);
+  poll = setInterval(confirmSave, 3500);
+  timeout = setTimeout(() => {
+    if (finished) return;
+    timedOut = true;
+    clearInterval(poll);
+    poll = null;
+    btn.disabled = false;
+    btn.textContent = 'ΕΛΕΓΧΟΣ ΑΠΟΘΗΚΕΥΣΗΣ';
+    notice('saveMessage',
+      'Δεν λάβαμε ακόμη αυτόματη επιβεβαίωση. Η αλλαγή μπορεί να έχει αποθηκευτεί. ' +
+      'ΜΗΝ υποβάλετε ξανά. Πατήστε «ΕΛΕΓΧΟΣ ΑΠΟΘΗΚΕΥΣΗΣ» για ασφαλή επανέλεγχο, ' +
+      'χωρίς νέα υποβολή.', true
+    );
+  }, 50000);
+
+  // A retry after a timeout is READ-ONLY: it never resubmits the POST.
+  btn.onclick = async () => {
+    if (!timedOut || finished || busy) return;
+    btn.disabled = true;
+    btn.textContent = 'ΕΛΕΓΧΕΤΑΙ…';
+    notice('saveMessage', 'Επαληθεύουμε την ίδια συμμετοχή χωρίς νέα υποβολή…');
+    await confirmSave();
+    if (!finished) {
+      btn.disabled = false;
+      btn.textContent = 'ΕΛΕΓΧΟΣ ΑΠΟΘΗΚΕΥΣΗΣ';
+      notice('saveMessage',
+        'Δεν ήταν δυνατή η επιβεβαίωση. Μην υποβάλετε δεύτερη φορά. ' +
+        'Επικοινωνήστε με τη γραμματεία αναφέροντας τον αριθμό συμμετοχής.',
+        true
+      );
+    }
+  };
+
+  try {
+    form.submit();
+  } catch (_) {
+    clearInterval(poll);
+    clearTimeout(timeout);
+    cleanup();
+    btn.disabled = true;
+    notice('saveMessage',
+      'Δεν ήταν δυνατή η αποστολή της αλλαγής. ' +
+      'Μην επαναλάβετε την υποβολή χωρίς έλεγχο από τη γραμματεία.',
+      true
+    );
+  }
+}
+
+
+for(const button of document.querySelectorAll('.action-option'))button.addEventListener('click',()=>chooseAction(button.dataset.target,true));
+$('findBoat').onclick=findBoat;
+$('sailInput').onkeydown=e=>{if(e.key==='Enter')findBoat();};
+$('terms').onchange=()=>{hide('authMessage');};
+$('continue').onclick=()=>{if(!$('terms').checked){notice('authMessage','Αποδεχτείτε πρώτα τους Όρους Χρήσης.',true);return;}if(!state.data){notice('authMessage','Δεν φορτώθηκε η συμμετοχή.',true);return;}initialCrew();step(2);};
+$('toggleCaptain').onclick=()=>{$('captainCard').value='';$('captainName').value='';$('captainClub').value='';$('captainForm').classList.toggle('hidden');resetMsg();};
+$('cancelCaptain').onclick=()=>hide('captainForm');
+$('applyCaptain').onclick=()=>applyPerson('captain');
+$('toggleSecond').onclick=()=>{for(const [id,key]of [['secondCard','card'],['secondName','name'],['secondClub','club']])$(id).value=state.second?.[key]||'';$('secondForm').classList.toggle('hidden');resetMsg();};
+$('cancelSecond').onclick=()=>hide('secondForm');
+$('applySecond').onclick=()=>applyPerson('second');
+$('removeSecond').onclick=()=>{state.second=null;hide('secondForm');render();showCompletedAction('Ο δεύτερος κυβερνήτης αφαιρέθηκε από τη σύνθεση (δεν έχει αποθηκευτεί ακόμη).');};
+$('addCard').oninput=()=>{$('addButtonWrap').classList.toggle('hidden',!isCard($('addCard').value));};
+$('addMember').onclick=addMember;
+$('applyOsr').onclick=()=>{const x=$('osr1').value,y=$('osr2').value;if(!x || !y || x===y){msg('Για νέα δήλωση WS OSR επιλέξτε δύο διαφορετικά πρόσωπα από το ενημερωμένο πλήρωμα. Αν θέλετε να διατηρήσετε την προηγούμενη δήλωση, πατήστε ΠΙΣΩ ΣΤΟ ΠΛΗΡΩΜΑ.',true);return;}showCompletedAction('Επιλέχθηκαν δύο νέα εξοικειωμένα μέλη WS OSR: '+x+' και '+y+' (δεν έχουν αποθηκευτεί ακόμη).');};
+$('cancelOsrChange').onclick=()=>{[$('osr1').value,$('osr2').value]=state.osrEditSnapshot||['',''];if(state.hasEdited)showCompletedAction('Επιστρέψατε στη σύνθεση πληρώματος. Δεν έγινε νέα αλλαγή WS OSR.');else backForAnotherChange();};
+$('editOsrFromReview').onclick=()=>chooseAction('osr',true);
+$('anotherAdd').onclick=()=>chooseAction('add',true);
+ $('anotherChange').onclick=backForAnotherChange;
+$('reviewAfterAction').onclick=review;
+$('reviewBtn').onclick=review;
+$('back').onclick=()=>{step(2);render();$('reviewBtn').classList.toggle('hidden',!state.hasEdited);};
+$('save').onclick=()=>{if(normalize(state.captain?.card)!==state.initialCaptain){notice('reviewWarning','Η αλλαγή Α΄ κυβερνήτη δεν υποστηρίζεται ακόμη από το Crew Bridge. Δεν έγινε αποθήκευση.',true);return;}save();};
+// The participant sees only the agreed simple confirmation after V9 verifies the save.
+let finalShown=false;
+const finalObserver=new MutationObserver(()=>{
+  if(finalShown || $('save').textContent.trim()!=='✓ ΟΛΟΚΛΗΡΩΘΗΚΕ')return;
+  finalShown=true;
+  $('saveMessage').replaceChildren(mk('strong','Οι τροποποιήσεις καταχωρήθηκαν.'),mk('div','Θα σας αποσταλεί η αναθεωρημένη κατάσταση πληρώματος μετά την ολοκλήρωση του ελέγχου.'));
+});
+finalObserver.observe($('save'),{subtree:true,childList:true,characterData:true});
+// Only visual effect: add spinner while V9 save button signals a pending request.
+const saveObserver=new MutationObserver(()=>{$('save').classList.toggle('saving',['ΑΠΟΘΗΚΕΥΣΗ…','ΕΛΕΓΧΕΤΑΙ…'].includes($('save').textContent.trim()));});
+saveObserver.observe($('save'),{subtree:true,childList:true,characterData:true});
+route();
+</script>
+</body>
+</html>
