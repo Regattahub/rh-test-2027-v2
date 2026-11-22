@@ -631,7 +631,23 @@ function save() {
   // A read-back can verify a real membership change. For OSR-only changes,
   // the existing explicit saveStatus / postMessage confirmation remains required.
   const canConfirmByReadback = payload.wosr.length === 0 &&
-    (beforeMembers !== expectedMembers || beforeSecond !== expectedSecond);
+    (beforeMembers !== expectedMembers ||
+     beforeSecond !== expectedSecond ||
+     cleanCard(state.data.captain_card) !== expectedCaptain);
+
+  const hasRealChange =
+    beforeMembers !== expectedMembers ||
+    beforeSecond !== expectedSecond ||
+    cleanCard(state.data.captain_card) !== expectedCaptain ||
+    payload.wosr.length === 2;
+
+  if (!hasRealChange) {
+    btn.disabled = false;
+    btn.textContent = 'ΑΠΟΘΗΚΕΥΣΗ ΣΤΗΝ ΙΔΙΑ ΣΥΜΜΕΤΟΧΗ';
+    notice('saveMessage',
+      'Δεν έχει γίνει κάποια αλλαγή για αποθήκευση.', true);
+    return;
+  }
 
   const frame = document.createElement('iframe');
   frame.name = 'rhcrew_post_' + Date.now();
