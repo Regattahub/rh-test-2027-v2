@@ -489,9 +489,9 @@ function review(){
  r.append(mk('p','Προστέθηκαν: '+([...after].filter(c=>!before.has(c)).join(', ')||'Κανένα')+' · Αφαιρέθηκαν: '+([...before].filter(c=>!after.has(c)).join(', ')||'Κανένα'),'fine'));
  hide('saveMessage');show('reviewActions');
  const changedCaptain=normalize(state.captain.card)!==state.initialCaptain;
- $('save').disabled=changedCaptain;
+ $('save').disabled=false;
  $('save').textContent='ΑΠΟΘΗΚΕΥΣΗ ΣΤΗΝ ΙΔΙΑ ΣΥΜΜΕΤΟΧΗ';
- if(changedCaptain){notice('reviewWarning','Η αλλαγή Α΄ κυβερνήτη δεν έχει συνδεθεί ακόμη με τον μηχανισμό αποθήκευσης. Δεν μπορεί να υποβληθεί αυτή η σύνθεση. Πατήστε ΠΙΣΩ και επαναφέρετε τον αρχικό κυβερνήτη πριν δοκιμάσετε άλλες αλλαγές.',true);}else{hide('reviewWarning');}
+hide('reviewWarning');
  
  step(3);
 }
@@ -822,8 +822,7 @@ $('anotherAdd').onclick=()=>chooseAction('add',true);
 $('reviewAfterAction').onclick=review;
 $('reviewBtn').onclick=review;
 $('back').onclick=()=>{step(2);render();$('reviewBtn').classList.toggle('hidden',!state.hasEdited);};
-$('save').onclick=()=>{if(normalize(state.captain?.card)!==state.initialCaptain){notice('reviewWarning','Η αλλαγή Α΄ κυβερνήτη δεν υποστηρίζεται ακόμη από το Crew Bridge. Δεν έγινε αποθήκευση.',true);return;}save();};
-// The participant sees only the agreed simple confirmation after V9 verifies the save.
+$('save').onclick=save;
 let finalShown=false;
 const finalObserver=new MutationObserver(()=>{
   if(finalShown || $('save').textContent.trim()!=='✓ ΟΛΟΚΛΗΡΩΘΗΚΕ')return;
