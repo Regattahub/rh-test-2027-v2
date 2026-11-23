@@ -95,6 +95,7 @@ button.danger{background:#b84c50;border-color:#a54246}
 .overview-tile{border-left:3px solid #ccab72;padding:4px 10px;font-size:14px;color:#18435d;min-width:0;overflow-wrap:anywhere}
 .overview-tile .meta{font-size:11px;font-weight:800;letter-spacing:.6px;color:#6e8090;text-transform:uppercase}
 .overview-tile .value{font-size:14px;font-weight:700;margin-top:3px}
+.overview-tile .crew-vertical-list{white-space:pre-line;line-height:1.7}
 .section-card{scroll-margin-top:22px}
 #editorPanel.mode-select .section-card{display:none}
 #editorPanel.mode-select .section-card.chosen{display:block}
@@ -551,8 +552,9 @@ hide('reviewWarning');
 }
 function updateOverview(){
  const container=$('overviewGrid');if(!container)return;container.replaceChildren();
- const fields=[['ΣΚΑΦΟΣ',boatName()],['ΚΥΒΕΡΝΗΤΗΣ',personText(state.captain)],['ΔΕΥΤΕΡΟΣ ΚΥΒΕΡΝΗΤΗΣ',state.second?personText(state.second):'Δεν έχει δηλωθεί'],['ΜΕΛΗ ΠΛΗΡΩΜΑΤΟΣ',state.members.length+' · '+(state.members.map(p=>p.card).join(', ')||'Κανένα')]];
- for(const [label,value] of fields){const tile=mk('div',null,'overview-tile');tile.append(mk('div',label,'meta'),mk('div',value,'value'));container.append(tile);}
+ const crewLines=state.members.map(p=>p.card+' — '+(p.name||'Όνομα μη διαθέσιμο')).join('\n')||'Κανένα';
+ const fields=[['ΣΚΑΦΟΣ',boatName()],['ΚΥΒΕΡΝΗΤΗΣ',personText(state.captain)],['ΔΕΥΤΕΡΟΣ ΚΥΒΕΡΝΗΤΗΣ',state.second?personText(state.second):'Δεν έχει δηλωθεί'],['ΜΕΛΗ ΠΛΗΡΩΜΑΤΟΣ · '+state.members.length,crewLines]];
+ for(const [label,value] of fields){const tile=mk('div',null,'overview-tile');const content=mk('div',value,'value');if(label.startsWith('ΜΕΛΗ ΠΛΗΡΩΜΑΤΟΣ'))content.classList.add('crew-vertical-list');tile.append(mk('div',label,'meta'),content);container.append(tile);}
 }
 function chooseAction(which, jumpToSection=false){
  if(which==='osr')state.osrEditSnapshot=[$('osr1').value,$('osr2').value];
