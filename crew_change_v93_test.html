@@ -186,7 +186,7 @@ footer{color:#e7f5f9;text-shadow:0 1px 1px #003253}
 </div>
 <div class="hero-copy"><p class="eyebrow">RegattaHub · Προσωπική πρόσβαση</p><h1>ΑΛΛΑΓΗ ΠΛΗΡΩΜΑΤΟΣ</h1><div class="race">ΚΥΠΕΛΛΟ ΧΡΙΣΤΟΥΓΕΝΝΩΝ 2026</div><p class="sub">Η αλλαγή γίνεται στην ίδια συμμετοχή, χωρίς νέα υποβολή.</p></div>
 </header>
-<div class="preview-banner" role="note"><span class="seal">⚠</span><div><strong>ΑΛΛΑΓΗ ΠΛΗΡΩΜΑΤΟΣ — ΠΡΑΓΜΑΤΙΚΕΣ ΚΑΤΑΧΩΡΙΣΕΙΣ</strong>Αυτή η έκδοση συνδέεται με το Crew Bridge και τη Jotform των Χριστουγέννων. Η αποθήκευση ενημερώνει πραγματικές συμμετοχές. Οι αλλαγές αποθηκεύονται στην ίδια συμμετοχή.</div></div>
+<div class="preview-banner hidden" role="note"></div>
 <nav aria-label="Πρόοδος φόρμας" class="steps">
 <div class="step active" id="stepInd1"><span class="num">1</span><span>Προσωπική πρόσβαση</span></div>
 <div class="step" id="stepInd2"><span class="num">2</span><span>Αλλαγή πληρώματος</span></div>
@@ -288,6 +288,7 @@ footer{color:#e7f5f9;text-shadow:0 1px 1px #003253}
 <section aria-labelledby="osrTitle" class="section-card osr">
 <div class="section-header"><span class="section-symbol">OSR</span><div><h3 id="osrTitle">Εξοικειωμένα μέλη WS OSR 6.05.3</h3><div class="section-desc">Επίλεξε μόνο αν θέλεις να αλλάξεις τα υπάρχοντα μέλη</div></div></div>
 <div id="osrEditCurrent" class="osr-edit-current" aria-live="polite"></div>
+<div id="osrValidationNotice" class="callout warn hidden" role="alert"></div>
 <p class="osr-edit-help">Αν θέλετε αντικατάσταση, επιλέξτε <strong>δύο διαφορετικά πρόσωπα από το ενημερωμένο πλήρωμα</strong>. Αφήστε και τα δύο πεδία στην αρχική επιλογή για να μη μεταβληθεί η υπάρχουσα δήλωση.</p>
 <div class="fields two"><div class="field"><label for="osr1">Νέο εξοικειωμένο μέλος 1</label><select id="osr1"></select></div><div class="field"><label for="osr2">Νέο εξοικειωμένο μέλος 2</label><select id="osr2"></select></div></div>
 <div class="row"><button id="applyOsr" type="button">ΕΦΑΡΜΟΓΗ ΔΥΟ ΜΕΛΩΝ WS OSR</button><button id="cancelOsrChange" class="secondary" type="button">ΠΙΣΩ ΣΤΟ ΠΛΗΡΩΜΑ</button></div>
@@ -387,10 +388,38 @@ function osrDisplay(person){
  if(person.card){const found=[state.captain,...(state.second?[state.second]:[]),...state.members].find(x=>x?.card===person.card);return (found?.name || person.name || 'Δελτίο '+person.card)+(found?.card?' — '+found.card:'');}
  return person.name||'Μη διαθέσιμο';
 }
+// Compare the original declaration with the final roster, across all roles.
+// Missing WS OSR data are left to the server's authoritative validation.
+function osrValidationMessage(){
+ const cardKey=value=>normalize(value).replace(/^0+(?=\d)/,'');
+ const nameKey=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim().toUpperCase();
+ const current=new Set(allCards().map(cardKey));
+ const selected=[$('osr1').value,$('osr2').value].filter(Boolean).map(cardKey);
+ if(selected.length){
+  return selected.length!==2 || new Set(selected).size!==2 || selected.some(card=>!current.has(card))
+   ? 'Επιλέξτε δύο διαφορετικά μέλη WS OSR από το ενημερωμένο πλήρωμα πριν συνεχίσετε.' : '';
+ }
+ if(!state.initialOsr)return '';
+ const d=state.data||{};
+ const original=[P(d.captain_card,d.captain_name),P(d.second_captain_card,d.second_captain_name),...(d.crew_members||[])];
+ const removed=original.filter(person=>cardKey(person.card)&&!current.has(cardKey(person.card)));
+ const needsReplacement=state.initialOsr.some(declared=>
+  (declared.card && !current.has(cardKey(declared.card))) || removed.some(person=>
+   (person.name && nameKey(declared.name)===nameKey(person.name)) ||
+   String(declared.name||'').includes(cardKey(person.card))));
+ return needsReplacement
+  ? 'Ένα από τα δηλωμένα μέλη WS OSR δεν βρίσκεται πλέον στο πλήρωμα. Επιλέξτε δύο διαφορετικά μέλη από τη νέα σύνθεση πριν αποθηκεύσετε. Οι αλλαγές σας διατηρούνται στη φόρμα.' : '';
+}
+function requireValidOsr(){
+ const warning=osrValidationMessage();
+ if(!warning)return true;
+ step(2);chooseAction('osr',true);renderOsrStatus();
+ return false;
+}
 function osrStatus(){
  const a=$('osr1').value,b=$('osr2').value;
  if(a&&b){return {values:[{card:a},{card:b}],label:'Νέα επιλογή προς αποθήκευση',note:'Η νέα δήλωση είναι προσωρινή. Θα αποσταλεί μόνο μετά την τελική αποθήκευση.'};}
- if(state.initialOsr){return {values:state.initialOsr,label:'Ήδη δηλωμένα στη συμμετοχή',note:'Αυτά τα δύο πρόσωπα παραμένουν, εκτός αν επιλέξετε αντικατάσταση.'};}
+ if(state.initialOsr){return {values:state.initialOsr,label:'Ήδη δηλωμένα στη συμμετοχή',note:osrValidationMessage()||'Αυτά τα δύο πρόσωπα παραμένουν, εκτός αν επιλέξετε αντικατάσταση.'};}
  return {values:[null,null],label:'Τα ήδη δηλωμένα δύο μέλη δεν είναι διαθέσιμα στην παρούσα προβολή',note:'Η προηγούμενη δήλωση διατηρείται εφόσον δεν επιλέξετε δύο νέα μέλη. Δεν σημαίνει ότι δεν υπάρχουν ήδη δηλωμένα μέλη.'};
 }
 function renderOsrStatus(){
@@ -404,6 +433,9 @@ function renderOsrStatus(){
  $('osrCurrentNotice').textContent=info.label+'. '+info.note;
  $('osrEditCurrent').textContent=info.label+': '+info.values.map((p,i)=>(i+1)+'. '+osrDisplay(p)).join(' · ')+'.';
  $('overviewOsr').textContent='WS OSR 6.05.3 — '+info.label+': '+info.values.map(osrDisplay).join(' / ');
+ const warning=osrValidationMessage();
+ $('osrValidationNotice').textContent=warning;
+ $('osrValidationNotice').classList.toggle('hidden',!warning);
 }
 function updateCrewReview(latestCard=''){
  const box=$('currentCrewList');box.replaceChildren();
@@ -478,6 +510,7 @@ function review(){
  resetMsg();
  if(!state.members.length){msg('Χρειάζεται τουλάχιστον ένα μέλος πληρώματος.',true);step(2);return;}
  if(allCards().length>15||new Set(allCards()).size!==allCards().length){msg('Υπάρχουν περισσότερα από 15 ή διπλά δελτία.',true);return;}
+ if(!requireValidOsr())return;
  const x=$('osr1').value,y=$('osr2').value;
  if((!!x)!=(!!y)||(x&&x===y)){msg('Για αλλαγή WS OSR επέλεξε δύο διαφορετικά μέλη, ή άφησε και τα δύο «Χωρίς αλλαγή».',true);return;}
  const r=$('reviewContent');r.replaceChildren();
@@ -490,6 +523,10 @@ function review(){
  hide('saveMessage');show('reviewActions');
  const changedCaptain=normalize(state.captain.card)!==state.initialCaptain;
  $('save').disabled=false;
+ $('save').onclick=save;
+ $('back').onclick=backToCrew;
+ $('back').textContent='ΠΙΣΩ ΣΤΗ ΦΟΡΜΑ';
+ show('back');
  $('save').textContent='ΑΠΟΘΗΚΕΥΣΗ ΣΤΗΝ ΙΔΙΑ ΣΥΜΜΕΤΟΧΗ';
 hide('reviewWarning');
  
@@ -585,7 +622,9 @@ async function findBoat(){
 }
 function route(){
  if(location.protocol==='file:'){
-  document.querySelector('.preview-banner').innerHTML='<strong>Απαιτείται δημοσίευση στο GitHub Pages για συνδεδεμένη δοκιμή. Μην εισάγετε προσωπικό σύνδεσμο σε τοπικό αρχείο.</strong>';
+  const localWarning = document.querySelector('.preview-banner');
+  localWarning.classList.remove('hidden');
+  localWarning.textContent='Απαιτείται δημοσίευση στο GitHub Pages για συνδεδεμένη δοκιμή. Μην εισάγετε προσωπικό σύνδεσμο σε τοπικό αρχείο.';
   hide('accessPanel');return;
  }
  if(getAuth()){
@@ -595,12 +634,53 @@ function route(){
  }else{step(1);}
 }
 
+function backToCrew(){step(2);render();$('reviewBtn').classList.toggle('hidden',!state.hasEdited);}
+
+// Apps Script can reply from its nested HTML sandbox. Bind replies to this
+// POST's iframe, including its descendants, rather than trusting origin alone.
+function isCrewPostMessage(event,frame){
+ let origin;
+ try{origin=new URL(event.origin);}catch(_){return false;}
+ if(origin.protocol!=='https:' ||
+    !(origin.hostname==='script.google.com' || origin.hostname==='script.googleusercontent.com' ||
+      origin.hostname.endsWith('.googleusercontent.com')))return false;
+ let source=event.source;
+ try{
+  for(let depth=0;source&&depth<6;depth++){
+   if(source===frame.contentWindow)return true;
+   const parent=source.parent;
+   if(parent===source)break;
+   source=parent;
+  }
+ }catch(_){return false;}
+ return false;
+}
+
+function crewSaveFailure(error){
+ const code=String(error||'');
+ if(['WSOSR_REPLACEMENT_REQUIRED','SELECT_TWO_WSOSR_OR_NONE','WSOSR_CARD_NOT_IN_CREW'].includes(code))
+  return {edit:'osr',message:'Η αλλαγή δεν αποθηκεύτηκε: απαιτείται επιλογή δύο διαφορετικών μελών WS OSR από τη νέα σύνθεση. Πατήστε «ΔΙΟΡΘΩΣΗ WS OSR». Οι αλλαγές σας παραμένουν στη φόρμα.'};
+ if(code==='CREW_CHANGED_RELOAD_REQUIRED')
+  return {message:'Η αλλαγή δεν αποθηκεύτηκε επειδή η συμμετοχή ενημερώθηκε στο μεταξύ. Ανοίξτε ξανά τον προσωπικό σύνδεσμο για να φορτώσετε τα τελευταία στοιχεία και να κάνετε την αλλαγή.'};
+ if(['INVALID_PERSONAL_LINK','MISSING_PERSONAL_LINK','EXPIRED_PERSONAL_LINK'].includes(code))
+  return {message:'Η αλλαγή δεν αποθηκεύτηκε επειδή ο προσωπικός σύνδεσμος δεν είναι έγκυρος ή έχει λήξει. Ζητήστε νέο σύνδεσμο.'};
+ if(['CREW_CHANGE_WRITES_DISABLED','CAPTAIN_CHANGE_NOT_ENABLED'].includes(code))
+  return {message:'Η συγκεκριμένη αλλαγή δεν είναι ενεργοποιημένη και δεν αποθηκεύτηκε. Επικοινωνήστε με τη γραμματεία.'};
+ if(code==='BUSY_RETRY')
+  return {edit:'crew',message:'Η αλλαγή δεν αποθηκεύτηκε επειδή εκτελείται άλλη ενημέρωση. Περιμένετε λίγο και επιστρέψτε στη φόρμα για επανέλεγχο.'};
+ if(['INVALID_CAPTAIN_CARD','CREW_SIZE_INVALID','INVALID_CARD','INVALID_SECOND_CAPTAIN','DUPLICATE_OR_TOO_MANY_CARDS'].includes(code))
+  return {edit:'crew',message:'Η αλλαγή δεν αποθηκεύτηκε: ελέγξτε ότι τα δελτία είναι έγκυρα και διαφορετικά και ότι υπάρχουν έως 15 άτομα συνολικά, με τουλάχιστον ένα μέλος πληρώματος.'};
+ // Errors during read-back or queue synchronization may follow a Jotform write.
+ return {uncertain:true,message:'Ο server ανέφερε πρόβλημα κατά την αποθήκευση ή την επιβεβαίωση. Η αλλαγή μπορεί να έχει καταχωρηθεί μερικώς. Μην υποβάλετε ξανά· επικοινωνήστε με τη γραμματεία για έλεγχο της ίδιας συμμετοχής.'};
+}
+
 function save() {
   const a = getAuth();
   if (!a || !state.data?.revision) {
     notice('saveMessage', 'Απαιτείται νέος προσωπικός σύνδεσμος.', true);
     return;
   }
+  if (!requireValidOsr()) return;
 
   const btn = $('save');
   btn.disabled = true;
@@ -674,6 +754,7 @@ function save() {
     form.append(input);
   }
   document.body.append(frame, form);
+  hide('back');
 
   let finished = false;
   let busy = false;
@@ -706,12 +787,38 @@ function save() {
     );
   }
 
+  function fail(result) {
+    if (finished) return;
+    finished = true;
+    cleanup();
+    const help = crewSaveFailure(result.error);
+    btn.disabled = true;
+    btn.onclick = null;
+    btn.textContent = help.uncertain ? 'ΑΠΑΙΤΕΙΤΑΙ ΕΛΕΓΧΟΣ' : 'ΔΕΝ ΑΠΟΘΗΚΕΥΤΗΚΕ';
+    notice('saveMessage', help.message, true);
+    if (help.edit) {
+      show('back');
+      $('back').textContent = help.edit === 'osr' ? 'ΔΙΟΡΘΩΣΗ WS OSR' : 'ΠΙΣΩ ΣΤΗ ΦΟΡΜΑ';
+      $('back').onclick = () => {
+        backToCrew();
+        if (help.edit === 'osr') {
+          chooseAction('osr', true);
+          notice('osrValidationNotice', 'Επιλέξτε δύο διαφορετικά μέλη WS OSR από τη νέα σύνθεση πριν συνεχίσετε.', true);
+        }
+      };
+    }
+  }
+
   function onMessage(event) {
-    if (event.origin !== 'https://script.google.com' &&
-        event.origin !== 'https://script.googleusercontent.com') return;
+    if (!isCrewPostMessage(event, frame)) return;
     const e = event.data;
-    if (e?.app === 'regattahub-crew-christmas-v9' &&
-        e.result?.ok && e.result.updated &&
+    if (e?.app !== 'regattahub-crew-christmas-v9' || !e.result) return;
+    if (e.result.submissionId != null && String(e.result.submissionId) !== a.id) return;
+    if (e.result.ok === false) {
+      fail(e.result);
+      return;
+    }
+    if (e.result.ok && e.result.updated &&
         String(e.result.submissionId) === a.id) {
       finish(e.result);
     }
@@ -837,7 +944,7 @@ $('anotherAdd').onclick=()=>chooseAction('add',true);
  $('anotherChange').onclick=backForAnotherChange;
 $('reviewAfterAction').onclick=review;
 $('reviewBtn').onclick=review;
-$('back').onclick=()=>{step(2);render();$('reviewBtn').classList.toggle('hidden',!state.hasEdited);};
+$('back').onclick=backToCrew;
 $('save').onclick=save;
 let finalShown=false;
 const finalObserver=new MutationObserver(()=>{
@@ -853,3 +960,4 @@ route();
 </script>
 </body>
 </html>
+
