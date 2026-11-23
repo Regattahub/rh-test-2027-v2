@@ -175,6 +175,22 @@ footer{color:#e7f5f9;text-shadow:0 1px 1px #003253}
 .change-finish #reviewAfterAction{display:block;width:min(100%,410px);margin:0 auto;padding:15px 18px;font-size:16px;background:#0f7958;color:#fff;border:2px solid #0b6c4e;box-shadow:0 4px 12px #0f533522}
 .change-finish #reviewAfterAction:hover{filter:brightness(1.08)}
 @media(max-width:600px){.change-next-step{padding:14px}.change-finish{padding:15px}.change-next-step .change-actions button{flex:1 1 100%}}
+
+/* WS OSR: strong warning only when the current crew invalidates a declared OSR member. */
+.osr-roster-note.is-warning{
+  font-size:17px;
+  line-height:1.6;
+  font-weight:800;
+  color:#111111;
+  background:#fff0f1;
+  border:2px solid #c83947;
+  border-left:7px solid #b51f2e;
+  border-radius:10px;
+  padding:14px 16px;
+  margin:14px 0 16px;
+  box-shadow:0 3px 9px #94253318;
+}
+.osr-roster-note.is-warning::before{content:"⚠ ΠΡΟΣΟΧΗ — ";font-weight:900;color:#111111}
 </style>
 </head>
 <body>
@@ -436,6 +452,7 @@ function renderOsrStatus(){
  const warning=osrValidationMessage();
  $('osrValidationNotice').textContent=warning;
  $('osrValidationNotice').classList.toggle('hidden',!warning);
+ $('osrCurrentNotice').classList.toggle('is-warning',Boolean(warning));
 }
 function updateCrewReview(latestCard=''){
  const box=$('currentCrewList');box.replaceChildren();
