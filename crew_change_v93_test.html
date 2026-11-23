@@ -410,7 +410,11 @@ function osrDisplay(person){
   const found=[state.captain,...(state.second?[state.second]:[]),...state.members].find(x=>x?.card===card);
   return (found?.name || (labelCard?'':label) || 'Δελτίο '+card)+(found?.card?' — '+found.card:'');
  }
- return label||'Μη διαθέσιμο';
+ // Display-only fallback: when WS OSR supplies just a name, match it to one unique crew card.
+ const nameKey=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim().toUpperCase();
+ const roster=[state.captain,...(state.second?[state.second]:[]),...state.members,...state.initialMembers];
+ const matchingCards=[...new Set(roster.filter(p=>p?.card&&nameKey(p.name)===nameKey(label)).map(p=>p.card))];
+ return matchingCards.length===1?label+' — '+matchingCards[0]:(label||'Μη διαθέσιμο');
 }
 // Compare the original declaration with the final roster, across all roles.
 // Missing WS OSR data are left to the server's authoritative validation.
