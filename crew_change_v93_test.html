@@ -402,8 +402,15 @@ function initialOsrFromBridge(d){
 }
 function osrDisplay(person){
  if(!person)return 'Μη διαθέσιμο';
- if(person.card){const found=[state.captain,...(state.second?[state.second]:[]),...state.members].find(x=>x?.card===person.card);return (found?.name || person.name || 'Δελτίο '+person.card)+(found?.card?' — '+found.card:'');}
- return person.name||'Μη διαθέσιμο';
+ // For display only: bridge may return a card as the text "Αρ. δελτίου 43592".
+ const label=String(person.name||'').trim();
+ const labelCard=label.match(/^(?:Αρ\.?\s*δελτίου|Δελτίο)\s*[:#-]?\s*(\d{3,12})$/iu)?.[1]||'';
+ const card=person.card||labelCard;
+ if(card){
+  const found=[state.captain,...(state.second?[state.second]:[]),...state.members].find(x=>x?.card===card);
+  return (found?.name || (labelCard?'':label) || 'Δελτίο '+card)+(found?.card?' — '+found.card:'');
+ }
+ return label||'Μη διαθέσιμο';
 }
 // Compare the original declaration with the final roster, across all roles.
 // Missing WS OSR data are left to the server's authoritative validation.
