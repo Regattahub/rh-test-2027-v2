@@ -564,9 +564,29 @@ hide('reviewWarning');
  step(3);
 }
 function updateOverview(){
+  
+  const eioLabel = (card) => {
+    const status = state.data?.eio_statuses?.[normalize(card)]?.cls;
+
+    if (status === 'ok') return '🟢 ΕΝΕΡΓΟ';
+    if (status === 'error') return '🔴 ΛΗΓΜΕΝΟ / ΜΗ ΕΓΚΥΡΟ';
+    if (status === 'info') return '⚪ ΔΕΝ ΒΡΕΘΗΚΕ';
+
+    return '⚪ ΧΩΡΙΣ ΕΠΙΒΕΒΑΙΩΜΕΝΟ ΕΛΕΓΧΟ';
+  };
+
  const container=$('overviewGrid');if(!container)return;container.replaceChildren();
- const crewLines=state.members.map(p=>p.card+' — '+(p.name||'Όνομα μη διαθέσιμο')).join('\n')||'Κανένα';
- const fields=[['ΣΚΑΦΟΣ',boatName()],['ΚΥΒΕΡΝΗΤΗΣ',personText(state.captain)],['ΔΕΥΤΕΡΟΣ ΚΥΒΕΡΝΗΤΗΣ',state.second?personText(state.second):'Δεν έχει δηλωθεί'],['ΜΕΛΗ ΠΛΗΡΩΜΑΤΟΣ · '+state.members.length,crewLines]];
+
+const crewLines=state.members.map(p=>p.card+' — '+(p.name||'Όνομα μη διαθέσιμο')+' — '+eioLabel(p.card)).join('\n')||'Κανένα';
+
+
+const fields = [
+  ['ΣΚΑΦΟΣ', boatName()],
+  ['ΚΥΒΕΡΝΗΤΗΣ', personText(state.captain) + ' — ' + eioLabel(state.captain?.card)],
+  ['ΔΕΥΤΕΡΟΣ ΚΥΒΕΡΝΗΤΗΣ', state.second ? personText(state.second) + ' — ' + eioLabel(state.second.card) : 'Δεν έχει δηλωθεί'],
+  ['ΜΕΛΗ ΠΛΗΡΩΜΑΤΟΣ · ' + state.members.length, crewLines]
+];
+
  for(const [label,value] of fields){const tile=mk('div',null,'overview-tile');const content=mk('div',value,'value');if(label.startsWith('ΜΕΛΗ ΠΛΗΡΩΜΑΤΟΣ'))content.classList.add('crew-vertical-list');tile.append(mk('div',label,'meta'),content);container.append(tile);}
 }
 function chooseAction(which, jumpToSection=false){
